@@ -4,7 +4,10 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("ingrese dos numeros para la suma");
+            int a = 0; b = 0;
+            int a = int.Parse(Console.WriteLine);
+
         }
     }
 }
