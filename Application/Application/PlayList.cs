@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class PlayList
+    public class PlayList
     {
     }
 }

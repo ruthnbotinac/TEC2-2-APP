@@ -4,10 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Tengo Hambre");
-            //Tengo hambre
-
-            //asdaad
+            //Integrantes del grupo: Lisseth Tatiana Quilindo Patiño (506222011)
+            //                       Daniel Esteban Torres Triana(506222711)
+            //
         }
     }
 }
