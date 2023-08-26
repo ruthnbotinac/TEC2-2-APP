@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             //Add Comment
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine(Math.Pow(2,3));
         }
     }
 }
