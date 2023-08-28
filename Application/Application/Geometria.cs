@@ -8,5 +8,7 @@ namespace Application
 {
     public class Geometria
     {
+        int area, 
+
     }
 }
