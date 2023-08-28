@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Elija la forma geométrica");
+            Console.WriteLine("Eliga: area, perítimetro, volumen ");
+
         }
     }
 }
