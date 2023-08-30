@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class Tandas
+    public static  class Tandas
     {
     }
 }
