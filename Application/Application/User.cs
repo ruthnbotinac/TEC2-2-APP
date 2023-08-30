@@ -17,6 +17,7 @@ namespace Application
         private string category;
         private int phoneNumber;
         private string description;
+        private int dNi;
 
 
         public string firstnm
@@ -63,6 +64,11 @@ namespace Application
         {
             get { return phoneNumber; }
             set { phoneNumber = value; }
+        }
+        public int identificationNumber
+        {
+            get { return dNi; }
+            set { dNi = value; }
         }
         public string profile
         {

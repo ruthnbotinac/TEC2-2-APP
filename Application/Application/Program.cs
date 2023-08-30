@@ -7,6 +7,7 @@
             User userProfile = new User();
             userProfile.firstnm = "Jose";
             userProfile.lastnm = "Cardenas";
+            userProfile.customerId = 122214;
             userProfile.eml = "cardenas123@best.com";
             userProfile.CustuserName = "JC Ortiz";
             userProfile.customerAge = 39;
