@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Application
 {
     public class FrontEmociones
+    //
     {
         private string _Asco;
         private string _Alegria;
