@@ -5,9 +5,10 @@
         static void Main(string[] args)
         {
             Console.WriteLine("ingrese dos numeros para la suma");
-            int a = 0; b = 0;
-            int a = int.Parse(Console.WriteLine);
 
+
+            //Brenda Vargas Parra - 614222713 & Viviana Garcia Valderrama - 506222720
+            
         }
     }
 }
