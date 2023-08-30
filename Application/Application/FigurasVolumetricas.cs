@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    public class Geometria
+    internal class FigurasVolumetricas
     {
-        int area, 
-
     }
 }
