@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class Producto
+    public class Producto
     {
+        privade string descripcion;
+        privade 
     }
 }
