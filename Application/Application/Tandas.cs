@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    public static  class Tandas
+    internal class Tandas
     {
+        public static void RealizarTandas(string NombreProducto)
+        {
+
+        }
     }
 }

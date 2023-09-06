@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class Inventario
+    internal class Recetas
     {
-    
     }
 }
