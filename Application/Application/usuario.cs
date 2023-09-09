@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class usuario
+    internal class Usuario
     {
         private static string _userName = "BraianRamirez";
         private static string _password = "GETSUGAtenshou";

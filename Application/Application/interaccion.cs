@@ -17,11 +17,11 @@ namespace Application
                 nombre = Console.ReadLine();
                 Console.WriteLine("Ingrese una contraseña:");
                 contrasena = Console.ReadLine();
-                usuario usuario = new usuario();
-                usuario.UserName = nombre;
-                usuario.Password = contrasena;
+                Usuario usuario = new Usuario();
+                Usuario.UserName = nombre;
+                Usuario.Password = contrasena;
 
-                Console.WriteLine($"su usuario es: {usuario.UserName} y su contraseña es: {usuario.Password}");
+                Console.WriteLine($"su usuario es: {Usuario.UserName} y su contraseña es: {Usuario.Password}");
             }
             if (op == 2)
             {
@@ -30,7 +30,7 @@ namespace Application
                 nombre = Console.ReadLine();
                 Console.WriteLine("Contraseña: ");
                 contrasena = Console.ReadLine();
-                usuario.Acceso(nombre, contrasena);
+                Usuario.Acceso(nombre, contrasena);
             }
         }
         public static void MenuPrincipal()

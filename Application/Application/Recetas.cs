@@ -8,5 +8,7 @@ namespace Application
 {
     internal class Recetas
     {
+        var dictionary = new Dictionary<string, int>();
+        dictionary.Add("Azucar", 47);
     }
 }
