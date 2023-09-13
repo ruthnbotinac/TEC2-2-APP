@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class Recetas
+    internal class Receta
     {
         
-        public Dictionary<string,Recetas> GetRecetas() {
+        public Dictionary<string,Receta> GetRecetas() {
 
-            return new Dictionary<string, Recetas>();
+            return new Dictionary<string, Receta>();
         }
 
     }
