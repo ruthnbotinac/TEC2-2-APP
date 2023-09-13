@@ -38,7 +38,7 @@ namespace Application
             string NombreProducto, justificacion;
             double CantidadProducto;
             int op;
-            Console.WriteLine("Menú principal\n Seleccione una opción\n 1.Ingreso de materia prima\n 2.Ingreso bajas y reprocesos\n 3.Tandas\n 4.Enviar informe");
+            Console.WriteLine("Menú principal\n Seleccione una opción\n 1.Ingreso de materia prima\n 2.Ingreso bajas y reprocesos\n 3.Tandas\n 4.Ingrese nueva receta");
             op = int.Parse(Console.ReadLine());
             if (op == 1 ) {
                 Console.WriteLine("Ingrese el nombre del producto:");
@@ -80,6 +80,29 @@ namespace Application
             {
                 Console.WriteLine("Ingrese el nombre del producto realizado:");
                 NombreProducto = Console.ReadLine();    
+            }
+            if (op == 4)
+            {
+                Console.WriteLine("Ingrese nueva receta");
+                Console.WriteLine("Ingrese le nombre de la receta:");
+                string nombreReceta = Console.ReadLine();
+                Console.WriteLine("Ingrese el listado de ingredientes con sus respectivos pesos");
+
+                Console.WriteLine("Ingrese los pasos a seguir");
+
+                Dictionary<int, string> descipcion = new Dictionary<int, string>();
+
+                descipcion.Add(1, "");
+
+                   
+
+                 
+                //listado de las reciones
+                // pasos a segiur
+                // nombre receta
+
+                Receta receta = new Receta();
+
             }
         }
     }

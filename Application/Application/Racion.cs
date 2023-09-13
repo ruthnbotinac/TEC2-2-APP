@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace Application
 {
+    
     internal class Racion
     {
+        private string _producto { get; set; }
+        private int _peso { get; set; }
+        public string Producto { get {return _producto;} set { _producto = value; } }
+        public int Peso { get { return _peso;} set {  _peso = value; } }
+
+        public Racion(string producto, int peso)
+        {
+            _producto = producto;
+            _peso = peso;
+        }
+
     }
 }
