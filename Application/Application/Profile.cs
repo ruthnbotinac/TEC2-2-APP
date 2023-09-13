@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class User
+    internal class Profile
     {
         private string firstname;
         private string lastname;
@@ -18,19 +18,20 @@ namespace Application
         private int phoneNumber;
         private string description;
         private int dNi;
+        //private (location) location ; //Nota: Cuando pueda reemplazare el dato
 
 
-        public string firstnm
+        public string firstName
         {
             get { return firstname; }
             set { firstname = value; }
         }
-        public string lastnm
+        public string lastName
         {
             get { return lastname; }
             set { lastname = value; }
         }
-        public string eml
+        public string e_mail
         {
             get { return email; }
             set { email = value; }
@@ -82,6 +83,11 @@ namespace Application
                     $"Contact me: {phoneNumber}\n" +
                     $"Description: {description}"; }
         }
+        //public string newprofile(Log_In logIn) {
+        //    email = logIn.e_mail;
+            
+        //return profile;
+        //}
     }
 }
 
