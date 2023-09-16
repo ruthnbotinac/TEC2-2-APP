@@ -1,109 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 
 namespace Application
 {
     public class FigurasPlanas
     {
-        private double _lado { get; set; }
-        public double Lado
+        // Clase base para figuras 2D
+        public abstract class Figura2D
         {
-            get { return _lado; }
-            set { _lado = value; }
+            public abstract double CalcularArea();
+            public abstract double CalcularPerimetro();
         }
 
-        private double _base { get; set; }
-        public double Base
+        // Clase para representar un cuadrado
+        public class Cuadrado : Figura2D
         {
-            get { return _base; }
-            set { _base = value; }
-        }
+            public double Lado { get; set; }
 
-        private double _altura { get; set; }
-        public double Altura
-        {
-            get { return _altura; }
-            set { _altura = value; }
-        }
-
-        public static void ExecuteExercise()
-        {
-            Console.WriteLine("Elegir una de las opciones");
-            string opc;
-            opc = Console.ReadLine();
-            Console.WriteLine("La opcion es " + opc);
-            switch (opc)
+            public override double CalcularArea()
             {
-                case "1":
-                    AreaCuadrado();
-                    break;
+                return Lado * Lado;
+            }
 
-                case "2":
-                    AreaRectangulo();
-                    break;
-
-                case "3":
-                    AreaTriangulo();
-                    break;
-
-                default:
-                    Console.WriteLine("Opción no válida");
-                    break;
+            public override double CalcularPerimetro()
+            {
+                return 4 * Lado;
             }
         }
 
-        public static void AreaCuadrado()
+        // Clase para representar un círculo
+        public class Circulo : Figura2D
         {
-            FigurasPlanas figuras = new FigurasPlanas();
+            public double Radio { get; set; }
 
-            Console.WriteLine();
-            Console.WriteLine("Área de Cuadrado");
-            Console.Write("Ingresa un lado del cuadrado: ");
+            public override double CalcularArea()
+            {
+                return Math.PI * Math.Pow(Radio, 2);
+            }
 
-            figuras.Lado = double.Parse(Console.ReadLine());
-
-            double area = figuras.Lado * figuras.Lado;
-            Console.WriteLine("");
-            Console.WriteLine($"El área del cuadrado con lado {figuras.Lado} es: {area}");
+            public override double CalcularPerimetro()
+            {
+                return 2 * Math.PI * Radio;
+            }
         }
 
-        public static void AreaRectangulo()
-        {
-            FigurasPlanas figuras = new FigurasPlanas();
-
-            Console.WriteLine("Area del Rectangulo");
-            Console.Write("Ingresa la base del Rectangulo: ");
-            figuras.Base = double.Parse(Console.ReadLine());
-
-            Console.Write("Ingresa la altura del Rectangulo: ");
-            figuras.Altura = double.Parse(Console.ReadLine());
-
-            double Area = figuras.Base * figuras.Altura;
-
-            Console.WriteLine("");
-            Console.WriteLine($"El Area del Rectangulo es: {Area}");
-        }
-
-        public static void AreaTriangulo()
-        {
-            FigurasPlanas figuras = new FigurasPlanas();
-
-            Console.WriteLine("Area del Triangulo");
-            Console.Write("Ingresa la base del Triangulo: ");
-            figuras.Base = double.Parse(Console.ReadLine());
-
-            Console.Write("Ingresa la altura del Triangulo: ");
-            figuras.Altura = double.Parse(Console.ReadLine());
-
-            double Area = (figuras.Base * figuras.Altura) / 2;
-
-            Console.WriteLine("");
-            Console.WriteLine($"El Area del Triangulo es: {Area}");
-        }
     }
 
 }
