@@ -13,6 +13,8 @@ namespace Application
         private string _descripcion;
         private int _cantidad;
         private decimal _precioUnitario;
+        private string _producto;
+        private string _marca;
 
         public int Id
         {
@@ -26,16 +28,31 @@ namespace Application
             set { _descripcion = value; }
         }
 
+        private string producto;
+
         public int Cantidad
         {
             get { return _cantidad; }
             set { _cantidad = value; }
         }
 
+        private string marca;
+
         public decimal PrecioUnitario
         {
             get { return _precioUnitario; }
             set { _precioUnitario = value; }
+        }
+
+        public string Producto
+        {
+            get { return _producto; }
+            set { _producto = value; }
+        }
+        public string Marca
+        {
+            get { return _marca; }
+            set { _marca = value; }
         }
 
         // Constructor con parámetros
@@ -45,6 +62,13 @@ namespace Application
             Descripcion = descripcion;
             Cantidad = cantidad;
             PrecioUnitario = precioUnitario;
+        }
+
+        public DetalleRequisición(string producto, int cantidad, string marca)
+        {
+            this.producto = producto;
+            Cantidad = cantidad;
+            this.marca = marca;
         }
 
         // Método para calcular el costo total del detalle
