@@ -13,8 +13,10 @@ namespace Application
         private int hora;
         private int numero;
         private DateTime fecha;
+        private int age;
+        private int _id;
 
-       // DateTime fecha = new DateTime(2023, 09, 11);///
+        // DateTime fecha = new DateTime(2023, 09, 11);///
 
 
         public string Ubicacion

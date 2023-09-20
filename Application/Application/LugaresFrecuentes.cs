@@ -8,5 +8,12 @@ namespace Application
 {
     public class LugaresFrecuentes
     {
+        private string ubicacion;
+
+        public string Ubicacion
+        {
+            get { return ubicacion; }
+            set { ubicacion = value; }
+        }
     }
 }
