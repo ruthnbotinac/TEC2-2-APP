@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Application
+﻿namespace Application
 {
     internal class FigurasVolumetricas
     {
@@ -17,6 +15,14 @@ namespace Application
             public override double CalcularVolumen()
             {
                 return Math.Pow(Lado, 3);
+            }
+            public void CalcularArea()
+            {
+
+            }
+            public void Formulas()
+            {
+
             }
         }
     }

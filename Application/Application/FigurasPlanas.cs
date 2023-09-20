@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Application
+﻿namespace Application
 {
     public class FigurasPlanas
     {
@@ -40,6 +38,19 @@ namespace Application
             public override double CalcularPerimetro()
             {
                 return 2 * Math.PI * Radio;
+            }
+            public void Formulas()
+            {
+                List<string> pasos = new List<string>();
+                pasos.Add("1. hacer tal cosa");
+                pasos.Add("2. hacer tal cosa");
+                pasos.Add("3. hacer tal cosa");
+                pasos.Add("4. hacer tal cosa");
+
+                foreach (var paso in pasos)
+                {
+                    Console.WriteLine(paso);
+                }
             }
         }
 
