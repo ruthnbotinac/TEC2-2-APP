@@ -12,6 +12,8 @@ namespace Application
         private int _id;
         private string firstName;
         private string lastName;
+        private string email;
+        private string parentezco;
 
         public int Id
         {
@@ -51,6 +53,18 @@ namespace Application
         public string FullName
         {
             get { return $"{firstName} {lastName}"; }
+        }
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        public string Parentezco
+        {
+            get { return parentezco; }
+            set { parentezco = value; }
         }
     }
 
