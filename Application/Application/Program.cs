@@ -1,7 +1,7 @@
 ﻿namespace Application
 
-    //Integrantes: Maria de Los Angeles y Alexandra Rey 
-    
+//Integrantes: Maria de Los Angeles y Alexandra Rey 
+
 {
     public class Program
     {
@@ -14,6 +14,15 @@
             Console.WriteLine("Nombre del empleado: " + empleado1.Nombre);
             Console.WriteLine("Departamento: " + empleado1.Departamento);
 
+
+            Aprobador aprobador1 = new Aprobador(56, "pepito","stewart" );
+
+            // Acceder a las propiedades del aprobador
+            Console.WriteLine("ID" + aprobador1.Id);
+            Console.WriteLine("Nombre del aprobador: " + aprobador1.Nombre);
+            Console.WriteLine("ROL: " + aprobador1.Rol);
+
+
             // Crear un DetalleRequisición
             DetalleRequisición detalleRequisición = new DetalleRequisición("Producto1", 5, "MarcaX");
 
@@ -23,7 +32,8 @@
             Console.WriteLine("Cantidad: " + detalleRequisición.Cantidad);
             Console.WriteLine("Marca: " + detalleRequisición.Marca);
 
-        }
 
-    }
+
+        }
+   }
 }

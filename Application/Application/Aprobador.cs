@@ -29,15 +29,12 @@ namespace Application
         // Constructor con parámetros
         public Aprobador(int id, string nombre, string rol)
         {
-            _Id = id;
-            _nombre = nombre;
-            _rol = rol;
-        }
-
-        //Constructor
-        public Aprobador()
-        {
-
+            Console.WriteLine("Por favor ingrese su ID");
+            _Id = int.Parse(Console.ReadLine());    
+            Console.WriteLine("Por favor ingrese su nombre");
+            _nombre = Console.ReadLine();
+            Console.WriteLine("Por favor ingrese su rol");
+            _rol = Console.ReadLine();
         }
     }
   }
