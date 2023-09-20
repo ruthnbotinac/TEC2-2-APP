@@ -7,7 +7,7 @@ namespace Application
     public class Program
     {
         static List<Log_In> usuarios = new List<Log_In>();
-
+        static List<Profile> perfil= new List<Profile>();
         static void Main(string[] args)
             
         {
@@ -76,27 +76,45 @@ namespace Application
         {
             Console.Write("Ingrese un nombre de usuario: ");
             string nombreUsuario = Console.ReadLine();
-
+            Profile profile = new Profile();
             // Verificar si el nombre de usuario ya existe
             if (usuarios.Any(u => u.e_mail == nombreUsuario))
             {
                 Console.WriteLine("El nombre de usuario ya existe. Por favor, elija otro.");
                 return;
             }
-            //if (EsCorreoElectronicoValido(nombreUsuario))
-            //{
-            //    Console.WriteLine("La dirección de correo electrónico es válida.");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("La dirección de correo electrónico no es válida.");
-            //}
+            if (EsCorreoElectronicoValido(nombreUsuario))
+            {
+               Console.WriteLine("La dirección de correo electrónico es válida.");
+            }
+            else
+            {
+                Console.WriteLine("La dirección de correo electrónico no es válida.");
+            }
 
             Console.Write("Ingrese una contraseña: ");
             string contrasena = Console.ReadLine();
             Console.Write("Ingrese un correo alternativo: ");
             string alternativeEmail= Console.ReadLine();
             usuarios.Add(new Log_In(nombreUsuario, contrasena, alternativeEmail));
+            Console.Write("Ingrese su nombre");
+            String nombre= Console.ReadLine();
+            Console.Write("Ingrese su apellido");
+            String apellidos= Console.ReadLine();
+            Console.WriteLine("Ingrese su Id:");
+            int DnI = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese su edad:");
+            int age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese un nombre de usuario:");
+            string alias = Console.ReadLine();
+            Console.WriteLine("Ingrese una categoria");
+            String category= Console.ReadLine();
+            Console.WriteLine("Ingrese su telefono de contacto:");
+            int telefono= int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese una descripcion sobre usted y sus productos");
+            String descripcion= Console.ReadLine();
+            int iD = 1;
+            
             Console.WriteLine("Registro exitoso. Ahora puede iniciar sesión con su nuevo usuario.");
         }
         static bool EsCorreoElectronicoValido(string email)
