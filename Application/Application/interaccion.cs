@@ -87,16 +87,35 @@ namespace Application
                 Console.WriteLine("Ingrese le nombre de la receta:");
                 string nombreReceta = Console.ReadLine();
                 Console.WriteLine("Ingrese el listado de ingredientes con sus respectivos pesos");
+                Dictionary<string, int> nuevaReceta = new Dictionary<string, int>();
+
+                while(true)
+                {
+                    Console.WriteLine("Ingrese el nombre del ingrediente cunado termine digite la palabra fin:");
+                    NombreProducto = Console.ReadLine();
+                    if (NombreProducto.ToLower() == "fin")
+                        break;
+                    Console.WriteLine("Ingrese el peso de los ingredientes:");
+                    int peso = int.Parse(Console.ReadLine());   
+                    if (peso >= 0){
+                        nuevaReceta.Add(NombreProducto, peso);
+                    }
+                    else
+                    {
+                        Console.WriteLine("El valor ingresado no es valido");
+                    }
+                    Console.WriteLine($"la receta:{nombreReceta}");
+                        foreach (var kvp in  nuevaReceta)
+                    {
+                        Console.WriteLine($"Ingrediente: {kvp.Key}, gramaje: {kvp.Value} gramos");
+                    }
+                }
 
                 Console.WriteLine("Ingrese los pasos a seguir");
-
                 Dictionary<int, string> descipcion = new Dictionary<int, string>();
 
                 descipcion.Add(1, "");
 
-                   
-
-                 
                 //listado de las reciones
                 // pasos a segiur
                 // nombre receta
