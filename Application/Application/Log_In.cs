@@ -28,17 +28,12 @@ namespace Application
             get { return alternativeEmail; }
             set { alternativeEmail = value; }
         }
-        public string newAccount(string email, string password, string alternativeEmail) { 
-            string newAccount = email + "&" + password +"&" + alternativeEmail;
-            return newAccount;
+        public Log_In(string nombreUsuario, string contrasena,string alternativeEmail)
+        {
+            email = nombreUsuario;
+            password = contrasena;
+            alternativeEmail = alternativeEmail;
         }
-        public Boolean CorrectLogin(string email, string password) {
-            if (email == null || password == null) { return false; }
-            if (email == null || password == null) { }
-            return true;
-        }
-        //public string account() { 
-       
-        //}
+
     }
 }
