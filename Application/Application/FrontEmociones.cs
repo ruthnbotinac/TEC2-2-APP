@@ -7,39 +7,42 @@ using System.Threading.Tasks;
 namespace Application
 {
     public class FrontEmociones
-    //
     {
-        private string _Asco;
-        private string _Alegria;
-        private string _Tristeza;
-        private string _Enojo;
-        private string _Miedo;
-        private string _Sorpresa;
-
-        public string EmoAsco
+        private List<string> emociones = new List<string>
         {
-            get { return _Asco; }
-            set
-            {
-                if (value == "Asco" || value == "asco")
-                {
-                    Console.WriteLine("¡Excelente elección!");
-                    _Asco = value;
-                }
-                else
-                {
-                    throw new Exception("Revisa que hayas escrito correctamente");
-                }
+            "Ira", "Alegria", "Tristeza", "Esperanza", "Romance", "Aburrimiento", "Nostalgico"
+        };
 
-                //_Asco = value;
+        public void MostrarEmociones()
+        {
+            Console.WriteLine("Lista de emociones disponibles:");
+            for (int i = 0; i < emociones.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {emociones[i]}");
+            }
+        }
+
+        public string SeleccionarEmocion()
+        {
+            Console.WriteLine("Lista de emociones disponibles:");
+            for (int i = 0; i < emociones.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {emociones[i]}");
             }
 
-        }
-        public string EmoAlegria
-        {
-            get { return _Alegria; }
-            set { _Alegria = value; }
-        }
+            Console.Write("Elija una emoción ingresando el número correspondiente: ");
+            int opcion;
 
+            if (int.TryParse(Console.ReadLine(), out opcion) && opcion >= 1 && opcion <= emociones.Count)
+            {
+                return emociones[opcion - 1];
+            }
+            else
+            {
+                Console.WriteLine("Opción no válida. Por favor, ingrese un número válido.");
+                return null;
+            }
+        }
     }
+
 }

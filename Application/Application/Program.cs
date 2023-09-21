@@ -4,12 +4,18 @@
     {
         static void Main(string[] args)
         {
-            //Integrantes del grupo: Lisseth Tatiana Quilindo Patiño (506222011)
-            //                       Daniel Esteban Torres Triana(506222711)
-            //
-            FrontEmociones ejEmociones = new FrontEmociones();
-            ejEmociones.EmoAsco = "Asco";
-            Console.WriteLine(ejEmociones.EmoAsco);
+            Console.WriteLine("Bienvenido a la aplicación de elección de artistas por emoción.");
+
+            FrontEmociones frontEmociones = new FrontEmociones();
+            EleccionArtista eleccionArtista = new EleccionArtista();
+
+            ExperienciaUsuario experienciaUsuario = new ExperienciaUsuario(frontEmociones, eleccionArtista);
+
+            experienciaUsuario.InteractuarConUsuario();
+
+            Console.WriteLine("Presione cualquier tecla para salir.");
+            Console.ReadKey();
+
         }
     }
 }
