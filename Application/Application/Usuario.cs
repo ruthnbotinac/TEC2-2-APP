@@ -4,10 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace Application
 {
     public class Usuario
     {
+        //hola
         private string firstName;
         private string lastName;
         private int age;
@@ -34,7 +41,7 @@ namespace Application
             set { _id = value; }
 
         }
-            
+
 
         public int Age
         {
@@ -54,4 +61,3 @@ namespace Application
         }
     }
 }
-

@@ -1,33 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application
 {
     public class LugaresFrecuentes
     {
-        private string ubicacion;
-        private string latitud;
-        private string longitud;
+        private List<LugarFrecuente> lugares;
 
-        public string Ubicacion
+        public LugaresFrecuentes()
         {
-            get { return ubicacion; }
-            set { ubicacion = value; }
+            lugares = new List<LugarFrecuente>();
         }
 
-        public string Latitud
+        public void AgregarLugar(string nombre, double latitud, double longitud)
+        {
+            LugarFrecuente lugar = new LugarFrecuente(nombre, latitud, longitud);
+            lugares.Add(lugar);
+            Console.WriteLine($"Lugar frecuente '{nombre}' agregado con éxito.");
+        }
+
+        public List<LugarFrecuente> ObtenerLugares()
+        {
+            return lugares;
+        }
+    }
+
+    public class LugarFrecuente
+    {
+        private string nombre;
+        private double latitud;
+        private double longitud;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+        public double Latitud
         {
             get { return latitud; }
             set { latitud = value; }
-            }
+        }
 
-        public string Longitud
+        public double Longitud
         {
             get { return longitud; }
             set { longitud = value; }
         }
+
+        public LugarFrecuente(string nombre, double latitud, double longitud)
+        {
+            Nombre = nombre;
+            Latitud = latitud;
+            Longitud = longitud;
+        }
     }
-    }
+}
