@@ -24,7 +24,11 @@ namespace Application
         }
         
         public Comprador(string nombre, string rol) {
-            _nombre = nombre;
+
+            Console.WriteLine("Comprador");
+            Console.Write("Por favor ingrese su nombre");
+            _nombre = Console.ReadLine();
+            Console.Write("Por favor ingrese su rol");
             _rol = rol; 
 
 

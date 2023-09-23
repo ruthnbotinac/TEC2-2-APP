@@ -29,6 +29,7 @@ namespace Application
         // Constructor con parámetros
         public Aprobador(int id, string nombre, string rol)
         {
+            Console.WriteLine("APROBADOR")
             Console.WriteLine("Por favor ingrese su ID");
             _Id = int.Parse(Console.ReadLine());    
             Console.WriteLine("Por favor ingrese su nombre");
