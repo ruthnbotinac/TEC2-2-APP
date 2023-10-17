@@ -8,6 +8,9 @@ namespace Application
 {
     internal class Inventario
     {
-    
+    public static void descontarInventario()
+        {
+
+        }
     }
 }

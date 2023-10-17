@@ -87,39 +87,67 @@ namespace Application
                 Console.WriteLine("Ingrese le nombre de la receta:");
                 string nombreReceta = Console.ReadLine();
                 Console.WriteLine("Ingrese el listado de ingredientes con sus respectivos pesos");
-                Dictionary<string, int> nuevaReceta = new Dictionary<string, int>();
+                Dictionary<string, double> nuevaReceta = new Dictionary<string, double>();
 
                 while(true)
                 {
                     Console.WriteLine("Ingrese el nombre del ingrediente cunado termine digite la palabra fin:");
+
                     NombreProducto = Console.ReadLine();
+
                     if (NombreProducto.ToLower() == "fin")
                         break;
                     Console.WriteLine("Ingrese el peso de los ingredientes:");
-                    int peso = int.Parse(Console.ReadLine());   
-                    if (peso >= 0){
-                        nuevaReceta.Add(NombreProducto, peso);
+
+                    double peso = double.Parse(Console.ReadLine());   
+
+                    if (peso >= 0)
+                    {
+                        nuevaReceta.Add(NombreProducto, peso);    
                     }
                     else
                     {
                         Console.WriteLine("El valor ingresado no es valido");
                     }
-                    Console.WriteLine($"la receta:{nombreReceta}");
-                        foreach (var kvp in  nuevaReceta)
+                    
+                }
+
+                foreach (var kvp in nuevaReceta)
+                {
+                    Console.WriteLine($"Ingrediente: {kvp.Key}, Peso: {kvp.Value}");
+                }
+
+                Console.WriteLine("Ingrese los pasos a seguir. Para finalizar, ingrese ´salir´. ");
+                
+                Dictionary<int, string> descripcion = new Dictionary<int, string>();
+
+                while(true)
+                {
+                    Console.WriteLine("Ingrese el número del paso de la receta: ");
+                    string llaveInput = Console.ReadLine();
+
+                    if (llaveInput.ToLower() == "salir")
+                        break;
+                    if (int.TryParse(llaveInput,out int llave))
                     {
-                        Console.WriteLine($"Ingrediente: {kvp.Key}, gramaje: {kvp.Value} gramos");
+                        Console.WriteLine("Ingrese la descripción del paso a seguir: ");
+                        string valor = Console.ReadLine();
+
+                        descripcion[llave] = valor;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Caracter ingresadonno valido. Debe ser un número entero  ");
                     }
                 }
 
-                Console.WriteLine("Ingrese los pasos a seguir");
-                Dictionary<int, string> descipcion = new Dictionary<int, string>();
+                Console.WriteLine("\nContenido de la descripción de receta: ");
 
-                descipcion.Add(1, "");
-
-                //listado de las reciones
-                // pasos a segiur
-                // nombre receta
-
+                foreach (var kvp in descripcion)
+                {
+                    Console.WriteLine($"Paso: {kvp.Key}, Descripción: {kvp.Value}");
+                }
+               
                 Receta receta = new Receta();
 
             }
