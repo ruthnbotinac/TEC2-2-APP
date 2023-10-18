@@ -8,6 +8,7 @@ namespace Application
 {
     internal class interaccion
     {
+        
         public static void RegistroLogeo (int op)
         {
             string nombre, contrasena;
@@ -36,7 +37,7 @@ namespace Application
         public static void MenuPrincipal()
         {
             string NombreProducto, justificacion;
-            double CantidadProducto;
+            double CantidadProducto, Multiplicador;
             int op;
             Console.WriteLine("Menú principal\n Seleccione una opción\n 1.Ingreso de materia prima\n 2.Ingreso bajas y reprocesos\n 3.Tandas\n 4.Ingrese nueva receta");
             op = int.Parse(Console.ReadLine());
@@ -78,9 +79,24 @@ namespace Application
             }
             if (op == 3)
             {
+                Tandas tandas = new Tandas();
                 Console.WriteLine("Ingrese el nombre del producto realizado:");
-                NombreProducto = Console.ReadLine();    
+                NombreProducto = Console.ReadLine();
+                Console.WriteLine("Ingrese la cantidad de veces por la cual quiere multiplicar la receta");
+                Multiplicador = double.Parse(Console.ReadLine());
+
+                if (Multiplicador >= 0)
+                {
+                    Console.WriteLine("Cantidad invalida, por favor ingrese un valor positivo mayor a cero");
+                }
+                else
+                {
+                    
+                    tandas.RealizarTandas(NombreProducto, Multiplicador);
+                }
+                MenuPrincipal();
             }
+            
             if (op == 4)
             {
                 Console.WriteLine("Ingrese nueva receta");
@@ -147,7 +163,9 @@ namespace Application
                 {
                     Console.WriteLine($"Paso: {kvp.Key}, Descripción: {kvp.Value}");
                 }
-               
+
+                MenuPrincipal();
+
                 Receta receta = new Receta();
 
             }
