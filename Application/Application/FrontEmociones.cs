@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Application;
 
 namespace Application
 {
     public class FrontEmociones
     {
-        private List<string> emociones = new List<string>
+        private List<Emocion> emociones = new List<Emocion>
         {
-            "Ira", "Alegria", "Tristeza", "Esperanza", "Romance", "Aburrimiento", "Nostalgico"
+            new EmocionAburrimiento(),
+            new EmocionAlegria(),
+            new EmocionEsperanza(),
+            new EmocionIra(),
+            new EmocionNostalgico(),
+            new EmocionRomance(),
+            new EmocionTristeza()
         };
 
         public void MostrarEmociones()
@@ -18,18 +23,12 @@ namespace Application
             Console.WriteLine("Lista de emociones disponibles:");
             for (int i = 0; i < emociones.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {emociones[i]}");
+                Console.WriteLine($"{i + 1}. {emociones[i].Nombre}");
             }
         }
 
-        public string SeleccionarEmocion()
+        public Emocion SeleccionarEmocion()
         {
-            Console.WriteLine("Lista de emociones disponibles:");
-            for (int i = 0; i < emociones.Count; i++)
-            {
-                Console.WriteLine($"{i + 1}. {emociones[i]}");
-            }
-
             Console.Write("Elija una emoción ingresando el número correspondiente: ");
             int opcion;
 
@@ -44,5 +43,4 @@ namespace Application
             }
         }
     }
-
 }

@@ -1,34 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Application;
+
 
 namespace Application
 {
-    public class EleccionArtista
+    public class EmocionRomance : Emocion
     {
-        public class Cancion
+        public EmocionRomance()
         {
-            public string Autor { get; set; }
-            public string Genero { get; set; }
-            public string Album { get; set; }
-            public string EmocionAsociada { get; set; }
-            public string UrlVideo { get; set; }
-            public string UrlImagenArtista { get; set; }
-            public string UrlImagenAlbum { get; set; }
+            Nombre = "Romance";
         }
-
-        public List<Cancion> ObtenerCancionesPorEmocion(string emocionSeleccionada)
+        public override List<EleccionArtista.Cancion> ObtenerCanciones()
         {
-            List<Cancion> canciones = new List<Cancion>();
+            List<EleccionArtista.Cancion> canciones = new List<EleccionArtista.Cancion>();
 
-            string[] lineas = File.ReadAllLines($"{emocionSeleccionada}.txt");
-            Cancion cancionActual = null;
+            string[] lineas = File.ReadAllLines("Romance.txt");
+            EleccionArtista.Cancion cancionActual = null;
 
             foreach (string linea in lineas)
             {
                 if (linea.StartsWith("Autor:"))
                 {
-                    cancionActual = new Cancion();
+                    cancionActual = new EleccionArtista.Cancion();
                     canciones.Add(cancionActual);
                     cancionActual.Autor = linea.Substring("Autor:".Length).Trim();
                 }
@@ -63,29 +58,6 @@ namespace Application
 
             return canciones;
         }
-
-        public void MostrarArtistas(List<Cancion> canciones)
-        {
-            Console.WriteLine("Lista de artistas relacionados con la emoción seleccionada:");
-            int contador = 1;
-
-            foreach (Cancion cancion in canciones)
-            {
-                Console.WriteLine($"{contador}. {cancion.Autor}");
-                contador++;
-            }
-        }
-
-        public void MostrarInformacionCancion(Cancion cancion)
-        {
-            Console.WriteLine($"Información de la canción:");
-            Console.WriteLine($"Autor: {cancion.Autor}");
-            Console.WriteLine($"Género: {cancion.Genero}");
-            Console.WriteLine($"Álbum: {cancion.Album}");
-            Console.WriteLine($"Emoción Asociada: {cancion.EmocionAsociada}");
-            Console.WriteLine($"URL del Video: {cancion.UrlVideo}");
-            Console.WriteLine($"URL de la Imagen del Artista: {cancion.UrlImagenArtista}");
-            Console.WriteLine($"URL de la Imagen del Álbum: {cancion.UrlImagenAlbum}");
-        }
     }
 }
+

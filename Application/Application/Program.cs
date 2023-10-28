@@ -1,4 +1,8 @@
-﻿namespace Application
+﻿using System;
+using System.Collections.Generic;
+using Application;
+
+namespace Application
 {
     public class Program
     {
@@ -7,15 +11,12 @@
             Console.WriteLine("Bienvenido a la aplicación de elección de artistas por emoción.");
 
             FrontEmociones frontEmociones = new FrontEmociones();
-            EleccionArtista eleccionArtista = new EleccionArtista();
-
-            ExperienciaUsuario experienciaUsuario = new ExperienciaUsuario(frontEmociones, eleccionArtista);
+            ExperienciaUsuario experienciaUsuario = new ExperienciaUsuario(frontEmociones);
 
             experienciaUsuario.InteractuarConUsuario();
 
             Console.WriteLine("Presione cualquier tecla para salir.");
             Console.ReadKey();
-
         }
     }
 }
