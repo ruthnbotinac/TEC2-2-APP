@@ -11,12 +11,12 @@
             Empleado empleado1 = new Empleado("John Doe", "Ventas", "Cadena A");
 
             // Acceder a las propiedades del empleado
-           
+
             Console.WriteLine("Nombre del empleado: " + empleado1.Nombre);
             Console.WriteLine("Departamento: " + empleado1.Departamento);
 
 
-            Aprobador aprobador1 = new Aprobador(56, "pepito","stewart" );
+            Aprobador aprobador1 = new Aprobador(56, "pepito", "stewart");
 
             // Acceder a las propiedades del aprobador
             Console.WriteLine("ID" + aprobador1.Id);
@@ -25,12 +25,12 @@
 
 
             // Crear un DetalleRequisición
-            DetalleRequisición detalleRequisición = new DetalleRequisición("Producto1", 5, "MarcaX");
+            DetalleRequisicion detalleRequisición = new DetalleRequisicion("Producto1", 5, "MarcaX");
 
             // Acceder a las propiedades del detalle
             Console.WriteLine("Detalle de la Requisición:");
-            Console.WriteLine("Producto: " + detalleRequisición.Producto);
-            Console.WriteLine("Cantidad: " + detalleRequisición.Cantidad);
+            Console.WriteLine("Producto: " + detalleRequisicion.Producto);
+            Console.WriteLine("Cantidad: " + detalleRequisicion.Cantidad);
             Console.WriteLine("Marca: " + detalleRequisición.Marca);
 
 

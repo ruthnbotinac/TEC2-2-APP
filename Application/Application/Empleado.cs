@@ -35,36 +35,36 @@ namespace Application
             _departamento = Console.ReadLine();
            
         }
-        public DetalleRequisición CrearDetalleRequisición(string producto, int cantidad, string marca)
+        public DetalleRequisicion CrearDetalleRequisición(string producto, int cantidad, string marca)
         {
-            
 
-            DetalleRequisición detalleRequisición = new DetalleRequisición(producto, cantidad, marca);
 
-            if (detallesRequisición == null)
+            DetalleRequisicion detalleRequisición = new DetalleRequisicion(producto, cantidad, marca);
+
+            if (detallesRequisicion == null)
             {
-                detallesRequisición = new List<DetalleRequisición>();
+                detallesRequisicion = new List<DetalleRequisicion>();
             }
 
-            
-            detallesRequisición.Add(detalleRequisición);
+
+            detallesRequisicion.Add(detalleRequisicion);
 
             // Devuelve el detalle de requisición creado.
             return detalleRequisición;
         }
 
-        private List<DetalleRequisición> detallesRequisición;
+        private List<DetalleRequisicion> detallesRequisicion;
 
-        public List<DetalleRequisición> ObtenerDetallesRequisiciónPendientes()
+        public List<DetalleRequisicion> ObtenerDetallesRequisiciónPendientes()
         {
             // Si la lista de detalles de requisición no está inicializada, devuelve una lista vacía.
-            if (detallesRequisición == null)
+            if (detallesRequisicion == null)
             {
-                return new List<DetalleRequisición>();
+                return new List<DetalleRequisicion>();
             }
 
             // Devuelve la lista de detalles de requisición pendientes.
-            return detallesRequisición;
+            return detallesRequisicion;
 
 
 

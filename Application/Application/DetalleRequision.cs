@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    public class DetalleRequisición
+    public class DetalleRequisicion
     {
         private int _id;
         private string _descripcion;
@@ -56,7 +56,7 @@ namespace Application
         }
 
         // Constructor con parámetros
-        public DetalleRequisición(int id, string descripcion, int cantidad, decimal precioUnitario)
+        public DetalleRequisicion(int id, string descripcion, int cantidad, decimal precioUnitario)
         {
             Id = id;
             Descripcion = descripcion;
@@ -64,7 +64,7 @@ namespace Application
             PrecioUnitario = precioUnitario;
         }
 
-        public DetalleRequisición(string producto, int cantidad, string marca)
+        public DetalleRequisicion(string producto, int cantidad, string marca)
         {
             this.producto = producto;
             Cantidad = cantidad;
@@ -95,5 +95,6 @@ namespace Application
         }
     }
 }
+
 
 

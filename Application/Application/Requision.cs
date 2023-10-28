@@ -13,7 +13,7 @@ namespace Application
         private DateTime _fechaCreacion;
         private string _estado;
         private Empleado _empleadoCreador;
-        private List<DetalleRequisición> _detalles;
+        private List<DetalleRequisicion> _detalles;
 
         public int Id
         {
@@ -39,7 +39,7 @@ namespace Application
             private set { _empleadoCreador = value; }
         }
 
-        public List<DetalleRequisición> Detalles
+        public List<DetalleRequisicion> Detalles
         {
             get { return _detalles; }
             private set { _detalles = value; }
@@ -52,11 +52,11 @@ namespace Application
             FechaCreacion = fechaCreacion;
             Estado = estado;
             EmpleadoCreador = empleadoCreador;
-            Detalles = new List<DetalleRequisición>();
+            Detalles = new List<DetalleRequisicion>();
         }
 
         // Método para agregar un detalle a la requisición
-        public void AgregarDetalle(DetalleRequisición detalle)
+        public void AgregarDetalle(DetalleRequisicion detalle)
         {
             Detalles.Add(detalle);
         }
@@ -64,9 +64,24 @@ namespace Application
         // Método para mostrar información de la requisición
         public void MostrarInformacion()
         {
+
+
             Console.WriteLine("Información de la Requisición:");
+
             Console.WriteLine("ID: " + Id);
+
             Console.WriteLine("Fecha de Creación: " + FechaCreacion);
+            string fechaIngresada = Console.ReadLine(); 
+
+            if (DateTime.TryParseExact(fechaIngresada, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fecha))
+            {
+                Console.WriteLine("Fecha ingresada: " + fecha.ToShortDateString());
+            }
+            else
+            {
+                Console.WriteLine("La fecha ingresada no es válida.");
+            }
+
             Console.WriteLine("Estado: " + Estado);
             Console.WriteLine("Empleado Creador: " + EmpleadoCreador.Nombre);
             Console.WriteLine("Detalles:");
