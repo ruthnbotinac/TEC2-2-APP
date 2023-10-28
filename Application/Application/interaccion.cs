@@ -39,7 +39,7 @@ namespace Application
             string NombreProducto, justificacion;
             double CantidadProducto, Multiplicador;
             int op;
-            Console.WriteLine("Menú principal\n Seleccione una opción\n 1.Ingreso de materia prima\n 2.Ingreso bajas y reprocesos\n 3.Tandas\n 4.Ingrese nueva receta");
+            Console.WriteLine("Menú principal\n Seleccione una opción\n 1.Ingreso de materia prima\n 2.Ingreso bajas y reprocesos\n 3.Tandas\n 4.Ingrese nueva receta\n 5.Inventario");
             op = int.Parse(Console.ReadLine());
             if (op == 1 ) {
                 Console.WriteLine("Ingrese el nombre del producto:");
@@ -85,13 +85,12 @@ namespace Application
                 Console.WriteLine("Ingrese la cantidad de veces por la cual quiere multiplicar la receta");
                 Multiplicador = double.Parse(Console.ReadLine());
 
-                if (Multiplicador >= 0)
+                if (Multiplicador <= 0)
                 {
                     Console.WriteLine("Cantidad invalida, por favor ingrese un valor positivo mayor a cero");
                 }
                 else
                 {
-                    
                     tandas.RealizarTandas(NombreProducto, Multiplicador);
                 }
                 MenuPrincipal();
@@ -165,9 +164,15 @@ namespace Application
                 }
 
                 MenuPrincipal();
+            }
+            if (op == 5)
+            {
+                Inventario inventario = new Inventario();
+                Console.WriteLine("Este es su inventario: ");
+                inventario.Mostrarinventario();
 
-                Receta receta = new Receta();
 
+                MenuPrincipal();    
             }
         }
     }

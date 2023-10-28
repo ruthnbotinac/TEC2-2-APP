@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    
-    internal class Racion
+    public class Racion
     {
         private string _producto { get; set; }
         private double _peso { get; set; }

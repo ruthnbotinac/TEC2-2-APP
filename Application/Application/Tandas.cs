@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class Tandas
+    public class Tandas
     {
         public Tandas() { }
-        Receta receta = new Receta();
+
         public void RealizarTandas(string NombreProducto, double Multiplicador)
         {
+            Receta receta = new Receta();
+            receta.recetario();
+
             if ( NombreProducto == "Cheesecake Queso Paipa")
             {
                foreach (var key in receta.CheesecakeQuesoPaipa.Keys)
@@ -19,7 +22,7 @@ namespace Application
                     receta.CheesecakeQuesoPaipa[key] *= Multiplicador; ;
                 }
 
-                Console.WriteLine("\nLa cantidad empleada de ingredientes para realizar la receta" + Multiplicador + "veces es:");
+                Console.WriteLine("\nLa cantidad empleada de ingredientes para realizar la receta " + Multiplicador + " veces es:");
 
                 foreach ( var kvp in receta.CheesecakeQuesoPaipa) 
                 {
@@ -28,5 +31,6 @@ namespace Application
 
             }
         }
+
     }
 }

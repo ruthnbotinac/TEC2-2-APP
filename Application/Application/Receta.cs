@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class Receta
+    public class Receta
     {
         public Dictionary<string, double> CheesecakeQuesoPaipa { get; set; }
+        private List<Racion> _raciones { get; set; }
+        private Dictionary<int, string> _descripcion { get; set; }
+        private string _nombreReceta { get; set; }
         public Receta() { }
         public Receta(List<Racion> raciones, Dictionary<int, string> descripcion, string nombreReceta)
         {
@@ -17,9 +20,7 @@ namespace Application
             _nombreReceta = nombreReceta;
         }
 
-        private List<Racion> _raciones { get; set; }
-        private Dictionary<int, string> _descripcion { get; set; }
-        private string _nombreReceta { get; set; }
+        
 
 
         public List<Racion> Raciones { get { return _raciones; } set { _raciones = value; } }
