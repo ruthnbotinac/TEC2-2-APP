@@ -7,4 +7,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Firestore" Version="3.4.0" />
+    <PackageReference Include="iRely.Common" Version="17.4.6491.18934" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\inventariococina-9e354-firebase-adminsdk-vhy8w-b78800f0f2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
