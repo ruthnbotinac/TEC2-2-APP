@@ -8,19 +8,13 @@ using System.Threading.Tasks;
 namespace Application.Data.FireStoreModels
 {
     [FirestoreData]
-    public class Class
+    public class Racion
     {
-        public Class(int id, Class className)
-        {
-            Id = id;
-            ClassName = className;
-        }
-
         [FirestoreDocumentId]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [FirestoreProperty]
-        public string Name { get; set; }
+        public string Producto { get; set; }
         [FirestoreProperty]
-        public Class ClassName { get; internal set; }
+        public double Peso { get; set; } 
     }
 }
