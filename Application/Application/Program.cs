@@ -1,7 +1,6 @@
-﻿using Application;
-using System;
+﻿using System;
 
-namespace Borrador3Proyecto
+namespace Application
 {
     class Program
     {

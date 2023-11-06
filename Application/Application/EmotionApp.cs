@@ -45,8 +45,7 @@ namespace Application
                     {
                         MusicInfo chosenArtist = chosenEmotion.MusicList[selectedArtistIndex - 1];
 
-                        Console.WriteLine(" ");
-                        Console.WriteLine("Información sobre la canción:\n");
+                        Console.WriteLine("\nInformación sobre la canción:\n");
                         Console.WriteLine($"Álbum: {chosenArtist.Álbum}");
                         Console.WriteLine($"Autor: {chosenArtist.Autor}");
                         Console.WriteLine($"Género: {chosenArtist.Género}");
@@ -63,28 +62,24 @@ namespace Application
                         }
                         else
                         {
-                            Console.WriteLine(" ");
-                            Console.WriteLine("¡Gracias por usar la aplicación!");
+                            Console.WriteLine("\n¡Gracias por usar la aplicación!\n");
                         }
                     }
                     else
                     {
-                        Console.WriteLine(" ");
-                        Console.WriteLine("Artista no encontrado. Reiniciando la lista de emociones.");
+                        Console.WriteLine("\nArtista no encontrado. Reiniciando la lista de emociones.\n");
                         Run();
                     }
                 }
                 else
                 {
-                    Console.WriteLine(" ");
-                    Console.WriteLine("Selección de emoción no válida. Reiniciando la lista de emociones.");
+                    Console.WriteLine("\nSelección de emoción no válida. Reiniciando la lista de emociones.\n");
                     Run();
                 }
             }
             else
             {
-                Console.WriteLine(" ");
-                Console.WriteLine("No se encontró la propiedad 'Sentimientos' en el JSON.");
+                Console.WriteLine("\nNo se encontró la propiedad 'Sentimientos' en el JSON.\n");
             }
         }
     }
