@@ -8,7 +8,7 @@ namespace Application.Data.Repositorios
 {
     public interface IRepositorio<T>
     {
-        void FindById(string  id);
+        T FindById(string  id);
 
         public List<T> FindAll();
 
