@@ -13,8 +13,8 @@ namespace Application.Data
 
         public Conexion()
         {
-            var filePath = @"Data\inventariococina-9e354-firebase-adminsdk-vhy8w-b78800f0f2.json";
-            Environment.SetEnvironmentVariable("GOOGLE_APLICATION_CREDENTIALS", filePath);
+            var filePath = @"C:\Users\user\Documents\GitHub\TEC2-2-APP\Application\Application\Data\inventariococina-9e354-firebase-adminsdk-vhy8w-b78800f0f2.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", filePath);
             FirestoreDb = FirestoreDb.Create("inventariococina-9e354");
 
         }
