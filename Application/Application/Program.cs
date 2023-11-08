@@ -1,5 +1,6 @@
 ﻿using Application.Data;
 using Application.Data.Repositorios;
+using static iTextSharp.text.pdf.AcroFields;
 
 namespace Application
 {
@@ -20,6 +21,17 @@ namespace Application
             {
                 Console.WriteLine($"{item.Id} {item.Producto} {item.Peso}");
             }
+
+            Console.WriteLine("------FindById");
+            var oneEntity = classRepo.FindById(all.First().Id);
+            Console.WriteLine($"{oneEntity.Id} {oneEntity.Producto} {oneEntity.Peso}");
+
+            Console.WriteLine("------Delete");
+
+            classRepo.Delete(all.First().Id);
+
+
+
 
             /* int op;
 

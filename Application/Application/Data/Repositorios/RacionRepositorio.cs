@@ -21,19 +21,29 @@ namespace Application.Data.Repositorios
         }
         public Racion FindById(string id)
         {
-            throw new Exception();
-            /*try
+            try
             {
                 MessageLogger.LogInformationMessage($"FindById...{id}");
 
-                MessageLogger.LogInformationMessage($"Success FindById...{id}");
+                var docRef = _conexion.FirestoreDb.Collection(COLLECTION_NAME).Document(id);
+                var snapshot = docRef.GetSnapshotAsync().ConfigureAwait(false).GetAwaiter().GetResult;
+
+                if (snapshot.Exists) 
+                {
+                    var racionModel = snapshot.ConvetTo<FireStoreModels.Racion>();
+                    racionModel.Id = snapshot.Id;
+                    MessageLogger.LogInformationMessage($"Success FindById...{id}");
+                    return MapEntityToFirestoreModel(racionModel);
+                }
+                MessageLogger.LogWarringMessage($"Collection class dosen't exsit");
+                return null;
 
             }
             catch (Exception ex)
             {
                 MessageLogger.LogErrorMessage(ex);
                 throw;
-            }*/
+            }
         }
 
         public List<Racion> FindAll()
@@ -88,10 +98,14 @@ namespace Application.Data.Repositorios
 
         public Racion update(Racion entity)
         {
-            throw new Exception();
-            /*try
+            try
             {
                 MessageLogger.LogInformationMessage($"update...{entity.Producto}");
+
+                var  recordRef = _conexion.FirestoreDb.Collection(COLLECTION_NAME).Document(entity.Id);
+                var fbModel = MapEntityToFirestoreModel(entity);
+                recordRef.SetAsync(fbModel, SetOptions.MergeAll).ConfigureAwait(false).GetAwaiter().GetResult();
+                return entity;
 
                 MessageLogger.LogInformationMessage($"Success update...{entity.Producto}");
 
@@ -100,14 +114,17 @@ namespace Application.Data.Repositorios
             {
                 MessageLogger.LogErrorMessage(ex);
                 throw;
-            }*/
+            }
         }
 
         public void Delete(string id)
         {
             try
             {
-                MessageLogger.LogInformationMessage($"Deleting...{id}");
+                MessageLogger.LogWarringMessage($"Deleting...{id}");
+
+                var recordRef = _conexion.FirestoreDb.Collection(COLLECTION_NAME).Document(id);
+                recordRef.DeleteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
 
                 MessageLogger.LogInformationMessage($"Success Delete...{id}");
 
