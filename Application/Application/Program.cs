@@ -27,10 +27,12 @@ namespace Application
             Console.WriteLine($"{oneEntity.Id} {oneEntity.Producto} {oneEntity.Peso}");
 
             Console.WriteLine("------Delete");
-
             classRepo.Delete(all.First().Id);
 
-
+            Console.WriteLine("-----Update");
+            Racion updateClass = all.Last();
+            updateClass.Producto = "Queso Azul";
+            classRepo.update(updateClass);
 
 
             /* int op;

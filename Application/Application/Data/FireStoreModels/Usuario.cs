@@ -13,9 +13,9 @@ namespace Application.Data.FireStoreModels
         [FirestoreDocumentId]
         public string Id { get; set; }
         [FirestoreProperty]
-        public string UserName { get; set; }
+        public string userName { get; set; }
         [FirestoreProperty]
-        public static string Password { get; set; }
+        public string Password { get; set; }
 
 
     }

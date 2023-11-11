@@ -26,14 +26,14 @@ namespace Application.Data.Repositorios
                 MessageLogger.LogInformationMessage($"FindById...{id}");
 
                 var docRef = _conexion.FirestoreDb.Collection(COLLECTION_NAME).Document(id);
-                var snapshot = docRef.GetSnapshotAsync().ConfigureAwait(false).GetAwaiter().GetResult;
+                var snapshot = docRef.GetSnapshotAsync().ConfigureAwait(false).GetAwaiter().GetResult();
 
                 if (snapshot.Exists) 
                 {
-                    var racionModel = snapshot.ConvetTo<FireStoreModels.Racion>();
+                    var racionModel = snapshot.ConvertTo<FireStoreModels.Racion>();
                     racionModel.Id = snapshot.Id;
                     MessageLogger.LogInformationMessage($"Success FindById...{id}");
-                    return MapEntityToFirestoreModel(racionModel);
+                    return MapFirebaseModelToEntity(racionModel);
                 }
                 MessageLogger.LogWarringMessage($"Collection class dosen't exsit");
                 return null;
@@ -105,9 +105,8 @@ namespace Application.Data.Repositorios
                 var  recordRef = _conexion.FirestoreDb.Collection(COLLECTION_NAME).Document(entity.Id);
                 var fbModel = MapEntityToFirestoreModel(entity);
                 recordRef.SetAsync(fbModel, SetOptions.MergeAll).ConfigureAwait(false).GetAwaiter().GetResult();
-                return entity;
-
                 MessageLogger.LogInformationMessage($"Success update...{entity.Producto}");
+                return entity;
 
             }
             catch (Exception ex)

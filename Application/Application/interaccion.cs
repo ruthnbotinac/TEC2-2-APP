@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class interaccion
+   public class interaccion
     {
         
-        public static void RegistroLogeo (int op)
+        public void RegistroLogeo (int op)
         {
+            Usuario usuario = new Usuario();
             string nombre, contrasena;
             if (op == 1)
             {
@@ -18,11 +19,10 @@ namespace Application
                 nombre = Console.ReadLine();
                 Console.WriteLine("Ingrese una contraseña:");
                 contrasena = Console.ReadLine();
-                Usuario usuario = new Usuario();
-                Usuario.UserName = nombre;
-                Usuario.Password = contrasena;
+                usuario.UserName = nombre;
+                usuario.Password = contrasena;
 
-                Console.WriteLine($"su usuario es: {Usuario.UserName} y su contraseña es: {Usuario.Password}");
+                Console.WriteLine($"su usuario es: {usuario.UserName} y su contraseña es: {usuario.Password}");
             }
             if (op == 2)
             {
@@ -31,7 +31,7 @@ namespace Application
                 nombre = Console.ReadLine();
                 Console.WriteLine("Contraseña: ");
                 contrasena = Console.ReadLine();
-                Usuario.Acceso(nombre, contrasena);
+                usuario.Acceso(nombre, contrasena);
             }
         }
         public static void MenuPrincipal()
