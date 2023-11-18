@@ -8,32 +8,35 @@ namespace Application
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("------Create");
             Conexion dbConn = new Conexion();
-            RacionRepositorio classRepo = new RacionRepositorio(dbConn);
             Racion newRacion = new Racion(string.Empty, "racion1", 1);
+            Usuario newUsuario = new Usuario(string.Empty, "KaterinVera", "12345542");
+            RacionRepositorio RacionRepo = new RacionRepositorio(dbConn);
+            UsuarioRepositorio UsuarioRepo = new UsuarioRepositorio(dbConn);
 
-            classRepo.Insert(newRacion);
-
+            Console.WriteLine("------Create");
+            UsuarioRepo.Insert(newUsuario);
+            
             Console.WriteLine("------FindAll");
-            var all = classRepo.FindAll(); 
+            var all = UsuarioRepo.FindAll(); 
             foreach (var item in all) 
             {
-                Console.WriteLine($"{item.Id} {item.Producto} {item.Peso}");
+                Console.WriteLine($"{item.Id} {item.UserName} {item.Password}");
             }
-
+            
             Console.WriteLine("------FindById");
-            var oneEntity = classRepo.FindById(all.First().Id);
-            Console.WriteLine($"{oneEntity.Id} {oneEntity.Producto} {oneEntity.Peso}");
-
+            var oneEntity = UsuarioRepo.FindById(all.First().Id);
+            Console.WriteLine($"{oneEntity.Id} {oneEntity.UserName} {oneEntity.Password}");
+            
             Console.WriteLine("------Delete");
-            classRepo.Delete(all.First().Id);
-
+            UsuarioRepo.Delete(all.First().Id);
+            
             Console.WriteLine("-----Update");
-            Racion updateClass = all.Last();
-            updateClass.Producto = "Queso Azul";
-            classRepo.update(updateClass);
-
+            Usuario updateClass = all.Last();
+            updateClass.UserName = "BraianFelipeRamirez";
+            updateClass.Password = "HORNofSALVATION#2";
+            UsuarioRepo.update(updateClass);
+           
 
             /* int op;
 

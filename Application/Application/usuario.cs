@@ -9,10 +9,14 @@ namespace Application
 {
     public class Usuario
     {
-        private static string _userName = "BraianRamirez";
-        private static string _password = "GETSUGAtenshou";
+        private  string _userName = "BraianRamirez";
+        private  string _password = "GETSUGAtenshou";
         private string _id { get; set; }
-        public string Id { get; set; }
+        public string Id 
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
         
         
         public  string UserName

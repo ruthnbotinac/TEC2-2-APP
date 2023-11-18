@@ -34,6 +34,7 @@ namespace Application.Data.Repositorios
                     racionModel.Id = snapshot.Id;
                     MessageLogger.LogInformationMessage($"Success FindById...{id}");
                     return MapFirebaseModelToEntity(racionModel);
+     
                 }
                 MessageLogger.LogWarringMessage($"Collection class dosen't exsit");
                 return null;
@@ -142,12 +143,13 @@ namespace Application.Data.Repositorios
                 Id = entity.Id,
                 Peso = entity.Peso,
                 Producto = entity.Producto,
+                UnidadMedida = entity.UnidadMedida,
             };
         }
 
         private Racion MapFirebaseModelToEntity(FireStoreModels.Racion model) 
         {
-            return new Racion(model.Id, model.Producto, model.Peso);
+            return new Racion(model.Id, model.Producto, model.Peso, model.UnidadMedida);
         }
 
     }

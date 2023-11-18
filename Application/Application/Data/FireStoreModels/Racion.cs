@@ -15,6 +15,8 @@ namespace Application.Data.FireStoreModels
         [FirestoreProperty]
         public string Producto { get; set; }
         [FirestoreProperty]
-        public double Peso { get; set; } 
+        public double Peso { get; set; }
+        [FirestoreProperty]
+        public string UnidadMedida { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace Application
     public class Receta
     {
         public Dictionary<string, double> CheesecakeQuesoPaipa { get; set; }
+        private string _id { get; set; }
         private List<Racion> _raciones { get; set; }
         private Dictionary<int, string> _descripcion { get; set; }
         private string _nombreReceta { get; set; }
@@ -22,7 +23,11 @@ namespace Application
 
         
 
-
+        public string Id  
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
         public List<Racion> Raciones { get { return _raciones; } set { _raciones = value; } }
 
         
@@ -49,5 +54,14 @@ namespace Application
             CheesecakeQuesoPaipa["Sal"] = 15;
         }
 
+        public Receta ( List<Racion> raciones, Dictionary<int, string> descripcion, string nombreReceta, string id)
+        {
+            _id = id;
+            _raciones = raciones;
+            _descripcion = descripcion;
+            _nombreReceta = nombreReceta;
+           
+        }
+        
     }
 }

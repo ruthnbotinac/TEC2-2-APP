@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 namespace Application.Data.FireStoreModels
 {
     [FirestoreData]
-    public class Usuario
+    public class Receta
     {
         [FirestoreDocumentId]
         public string Id { get; set; }
         [FirestoreProperty]
-        public string userName { get; set; }
+        public List<Application.Data.FireStoreModels.Racion> Raciones { get; set; }
         [FirestoreProperty]
-        public string Password { get; set; }
+        public Dictionary<int, string> Descripcion { get; set; }
+        [FirestoreProperty]
+        public string NombreReceta { get; set; }
 
-
+        
     }
 }
