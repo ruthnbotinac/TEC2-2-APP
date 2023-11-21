@@ -9,10 +9,11 @@ namespace Application
         static void Main(string[] args)
         {
             Conexion dbConn = new Conexion();
-            Racion newRacion = new Racion(string.Empty, "racion1", 1);
+            Racion newRacion = new Racion(string.Empty, "racion1", 1, "gramos");
             Usuario newUsuario = new Usuario(string.Empty, "KaterinVera", "12345542");
             RacionRepositorio RacionRepo = new RacionRepositorio(dbConn);
             UsuarioRepositorio UsuarioRepo = new UsuarioRepositorio(dbConn);
+            RacionRepositorio racionRepo = new RacionRepositorio(dbConn);
 
             Console.WriteLine("------Create");
             UsuarioRepo.Insert(newUsuario);

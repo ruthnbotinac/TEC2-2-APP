@@ -19,6 +19,9 @@ namespace Application.Data.FireStoreModels
         [FirestoreProperty]
         public string NombreReceta { get; set; }
 
-        
+        public Receta()
+        {
+            
+        }
     }
 }

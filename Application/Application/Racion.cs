@@ -25,6 +25,10 @@ namespace Application
             _unidadMedida = unidadMedida;
             
         }
+        public Racion()
+        {
+            
+        }
 
     }
 }

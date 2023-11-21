@@ -18,5 +18,10 @@ namespace Application.Data.FireStoreModels
         public double Peso { get; set; }
         [FirestoreProperty]
         public string UnidadMedida { get; set; }
+
+        public Racion()
+        {
+            
+        }
     }
 }

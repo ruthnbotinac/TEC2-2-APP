@@ -54,7 +54,7 @@ namespace Application
             CheesecakeQuesoPaipa["Sal"] = 15;
         }
 
-        public Receta ( List<Racion> raciones, Dictionary<int, string> descripcion, string nombreReceta, string id)
+        public Receta (string id, string nombreReceta, List<Racion> raciones, Dictionary<int, string> descripcion)
         {
             _id = id;
             _raciones = raciones;
