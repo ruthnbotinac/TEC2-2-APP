@@ -1,93 +1,77 @@
-﻿using static Application.FigurasPlanas;
-using static Application.FigurasVolumetricas;
+﻿using System;
+using System.Collections.Generic;
 
-namespace Application
+
+namespace CódigoFiguras
 {
-    public class Program
+    class Program
     {
         static void Main()
         {
-            int opciones = 0;
+            //Lista de figuras
+            List<string> opciones = new List<string>
+        {
+            "Triángulo",
+            "Cuadrado",
+            "Rectángulo",
+            "Rombo",
+            "Romboide",
+            "Trapecio",
+            "Trapezoide",
+            "Polígono Regular",
+            "Círculo",
+            "Elipse"
+        };
 
-            while (opciones != 3)
+            do //Se genera el ciclo para cada figura
             {
-
-                Console.WriteLine("Calculadora de Área, Perímetro y Volumen de Figuras");
-                Console.WriteLine("1. Figuras 2D");
-                Console.WriteLine("2. Figuras 3D");
-                Console.WriteLine("3. Salir");
-                Console.WriteLine("Ingrese una opción");
-
-                if (int.TryParse(Console.ReadLine(), out opciones))
+                for (int i = 0; i < opciones.Count; i++)
                 {
+                    Console.WriteLine($"{i + 1}. {opciones[i]}");
+                }
 
-                    switch (opciones)
+                Console.WriteLine("\nSeleccione una figura:\n"); //Selección de figura
+
+
+                int seleccion;
+                if (int.TryParse(Console.ReadLine(), out seleccion) && seleccion >= 1 && seleccion <= opciones.Count)
+                {
+                    IFigura figura = FiguraFactory.ObtenerFiguraSeleccionada(seleccion);
+
+                    if (figura != null)
                     {
-                        case 1:
-                            int opcionFigura3D;
-                            Console.WriteLine("Figuras 2D:");
-                            Console.WriteLine("1. Cuadrado");
-                            Console.WriteLine("2. Círculo");
+                        //Area o perimetro
+                        Console.WriteLine("¿Qué desea hallar, área o perímetro?");
+                        string operacion = Console.ReadLine().ToLower();
 
-                            Console.Write("Elija una figura (1/2): ");
-                            int opcionFigura2D = int.Parse(Console.ReadLine());
+                        double resultado = 0;
 
-                            if (opcionFigura2D == 1)
-                            {
-                                Console.Write("Ingrese el lado del cuadrado: ");
-                                double lado = double.Parse(Console.ReadLine());
-
-                                Cuadrado cuadrado = new Cuadrado { Lado = lado };
-                                Console.WriteLine($"Área del cuadrado: {cuadrado.CalcularArea()}");
-                                Console.WriteLine($"Perímetro del cuadrado: {cuadrado.CalcularPerimetro()}");
-                            }
-                            else if (opcionFigura2D == 2)
-                            {
-                                Console.Write("Ingrese el radio del círculo: ");
-                                double radio = double.Parse(Console.ReadLine());
-
-                                Circulo circulo = new Circulo { Radio = radio };
-                                Console.WriteLine($"Área del círculo: {circulo.CalcularArea()}");
-                                Console.WriteLine($"Perímetro del círculo: {circulo.CalcularPerimetro()}");
-                                circulo.Formulas();
-                            }
-                            else
-                            {
-                                Console.WriteLine("Opción no válida.");
-                            }
-
-                            break;
-                        case 2:
-
-                            Console.WriteLine("Figuras 3D:");
-                            Console.WriteLine("1. Cubo");
-
-                            Console.Write("Elija una figura (1): ");
-                            opcionFigura3D = int.Parse(Console.ReadLine());
-
-                            if (opcionFigura3D == 1)
-                            {
-                                Console.Write("Ingrese el lado del cubo: ");
-                                double ladoCubo = double.Parse(Console.ReadLine());
-
-                                Cubo cubo = new Cubo { Lado = ladoCubo };
-                                Console.WriteLine($"Volumen del cubo: {cubo.CalcularVolumen()}");
-                            }
-                            break;
-                        case 3:
-                            Console.WriteLine("Hasta luego");
-                            break;
-                        default:
-                            Console.WriteLine("Opcion no valida");
-                            break;
-
+                        switch (operacion)
+                        {
+                            case "area":
+                                resultado = figura.CalcularArea();
+                                break;
+                            case "perimetro":
+                                resultado = figura.CalcularPerimetro();
+                                break;
+                            default:
+                                Console.WriteLine("Operación no válida.");
+                                break;
+                        }
+                        //Arroja el resultado
+                        Console.WriteLine($"El resultado es: {resultado}");
+                        figura.MostrarInformacion();
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Ingrese una opción válida");
+                    Console.WriteLine("Opción no válida.");
                 }
-            }
+                //Opción para continuar o finalizar el programa
+                Console.WriteLine("¿Desea seleccionar otra figura? (Si/No)");
+            } while (Console.ReadLine().Equals("Si", StringComparison.OrdinalIgnoreCase));
         }
     }
+
+
 }
