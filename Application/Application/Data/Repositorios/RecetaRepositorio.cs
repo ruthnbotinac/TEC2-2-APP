@@ -148,7 +148,7 @@ namespace Application.Data.Repositorios
             {
                 Id = model.Id,
                 NombreReceta = model.NombreReceta,
-                Raciones = model.Raciones.Select(x => new FireStoreModels.Racion { Id = x.Id, Peso = x.Peso, Producto = x.Producto, UnidadMedida = x.UnidadMedida }).ToList(),
+                Raciones = model.Raciones.Select(x => new Racion { Id = x.Id, Peso = x.Peso, Producto = x.Producto, UnidadMedida = x.UnidadMedida }).ToList(),
                 Descripcion = model.Descripcion
             };
         }

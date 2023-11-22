@@ -20,6 +20,9 @@ namespace Application
             
             Console.WriteLine("------FindAll");
             var all = UsuarioRepo.FindAll(); 
+
+            all.FirstOrDefault(x => x.UserName = "" &&  )
+
             foreach (var item in all) 
             {
                 Console.WriteLine($"{item.Id} {item.UserName} {item.Password}");
