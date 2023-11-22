@@ -7,34 +7,22 @@
     {
         static void Main(string[] args)
         {
-
-            Empleado empleado1 = new Empleado("John Doe", "Ventas", "Cadena A");
-
-            // Acceder a las propiedades del empleado
-
-            Console.WriteLine("Nombre del empleado: " + empleado1.Nombre);
-            Console.WriteLine("Departamento: " + empleado1.Departamento);
-
-
-            Aprobador aprobador1 = new Aprobador(56, "pepito", "stewart");
-
-            // Acceder a las propiedades del aprobador
-            Console.WriteLine("ID" + aprobador1.Id);
-            Console.WriteLine("Nombre del aprobador: " + aprobador1.Nombre);
-            Console.WriteLine("ROL: " + aprobador1.Rol);
-
-
-            // Crear un DetalleRequisición
-            DetalleRequisicion detalleRequisición = new DetalleRequisicion("Producto1", 5, "MarcaX");
-
-            // Acceder a las propiedades del detalle
-            Console.WriteLine("Detalle de la Requisición:");
-            Console.WriteLine("Producto: " + detalleRequisicion.Producto);
-            Console.WriteLine("Cantidad: " + detalleRequisicion.Cantidad);
-            Console.WriteLine("Marca: " + detalleRequisición.Marca);
-
-
+            Console.WriteLine("BIENVENIDO A GESTIÓN DE COMPRAS");
+            Console.WriteLine("Ménu\n Seleccione una opción\n 1.Perfil empresa\n 2.Requisión de compra\n 3.Perfil aprobador\n 4. Perfil comprador");
+            int op;
+            PerfilEmpresa perfilEmpresa = new PerfilEmpresa();
+            Menus menus = new Menus();
+            Requisicion requisicion = new Requisicion();
+            op = int.Parse(Console.ReadLine());
+            if (op == 1)
+            {
+                menus.PrincipalMenu();
+            }
+            if (op == 2)
+            {
+                requisicion.RegistroRequisicion();
+            }
 
         }
-   }
+    }
 }

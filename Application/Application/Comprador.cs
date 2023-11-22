@@ -1,44 +1,29 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Application
-
+{
+    public class Comprador
     {
-        public class Comprador
+        public string Nombre { get; set; }
+        //Id 
+        public Comprador(string nombre)
         {
-            private string _nombre;
-            private string _rol;
-
-            public string Nombre
-            {
-                get { return _nombre; }
-                set { _nombre = value; }
-            }
-
-            public string Rol
-            {
-                get { return _rol; }
-                set { _rol = value; }
-            }
-
-            public Comprador(string nombre, string rol)
-            {
-                Console.WriteLine("Comprador");
-                Console.Write("Por favor ingrese su nombre: ");
-                _nombre = Console.ReadLine();
-                Console.Write("Por favor ingrese su rol: ");
-                _rol = Console.ReadLine();
-            }
-
-            // Ejemplo de un método personalizado que muestra información del comprador
-            public void MostrarInformacion()
-            {
-                Console.WriteLine($"Nombre: {_nombre}");
-                Console.WriteLine($"Rol: {_rol}");
-            }
+            Nombre = nombre;
         }
+
+        public void RealizarCompra(string producto, int cantidad)
+        {
+            // Desarrollar metodo para generar orden de compra 
+            //Brindar  información sobre el estatus del pedido
+
+ 
+            Console.WriteLine("El comprador " + Nombre + " ha comprado " + cantidad + " unidades del producto " + producto);
+        }
+
     }
+}

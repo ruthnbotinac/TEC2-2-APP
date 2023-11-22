@@ -1,6 +1,9 @@
 ﻿using System;
+using Application;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,42 +11,63 @@ namespace Application
 {
     public class Aprobador
     {
-        private int _Id;
-        private string _nombre;
-        private string _rol;
 
-        public int Id { get; set; }
+        //propiedades 
+        public String nombreAprobador;
+        public String departamento;
+        public ArrayList requisiciones;
 
-        public string Nombre
+        //encapsulamiento
+        public Aprobador()
         {
-            get { return _nombre; }
-            set { _nombre = value; }
+            requisiciones = new ArrayList();
         }
 
-        public string Rol
+        public string NombreAprobador
         {
-            get { return _rol; }
-            set { _rol = value; }
+            get { return nombreAprobador; }
+            set
+            {
+                if (value.Length > 4)
+                {
+                    nombreAprobador = value;
+                }
+                else
+                {
+                    throw new ArgumentException("El nombre del aprobador debe tener más de 4 caracteres");
+                }
+            }
         }
 
-        // Constructor con parámetros
-        public Aprobador(int id, string nombre, string rol)
+        public string Departamento
         {
-            Console.WriteLine("APROBADOR");
-            Console.WriteLine("Por favor ingrese su ID");
-            _Id = int.Parse(Console.ReadLine());    
-            Console.WriteLine("Por favor ingrese su nombre");
-            _nombre = Console.ReadLine();
-            Console.WriteLine("Por favor ingrese su rol");
-            _rol = Console.ReadLine();
-
+            get { return departamento; }
+            set { departamento = value; }
+        }
+        public ArrayList Requisiciones
+        {
+            get { return requisiciones; }
+            private set { requisiciones = value; }
+        }
+        public void RegistrarAprobador(string nombreAprobador, string departamento)
+        {
+            NombreAprobador = nombreAprobador;
+            Departamento = departamento;
+        }
+        public void ImprimirDatosAprobador()
+        { 
+        Console.WriteLine("nombreAprobador: " + NombreAprobador);
+        Console.WriteLine("Departamento:" + Departamento);
+           
         }
 
-        private void MostrarInformacion()
+        public void RevisarRequisicion(Requisicion requisicion)
         {
-            Console.WriteLine($"ID: {_Id}");
-            Console.WriteLine($"Nombre: {_nombre}");
-            Console.WriteLine($"Rol: {_rol}");
+            Console.WriteLine("Fecha: " + requisicion.Fecha);
+            Console.WriteLine("Producto: " + requisicion.Producto);
+            Console.WriteLine("Cantidad: " + requisicion.Cantidad);
+            Console.WriteLine("Unidad de Medida: " + requisicion.UnidadDeMedida);
         }
+
     }
-  }
+}
