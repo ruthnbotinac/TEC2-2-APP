@@ -1,26 +1,35 @@
-﻿using System;
+﻿using Application.Data;
+using Application.Data.Repositorios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Twilio;
 
 namespace Application
 {
    public class interaccion
     {
         
-        public void RegistroLogeo (int op)
+        public static void RegistroLogeo (int op)
         {
+            Conexion dbConn = new Conexion();
+            UsuarioRepositorio UsuarioRepo = new UsuarioRepositorio(dbConn);
             Usuario usuario = new Usuario();
+            var all = UsuarioRepo.FindAll();
             string nombre, contrasena;
             if (op == 1)
             {
-                Console.WriteLine("Ingrese su nombre para crear usuartio: ");
+                Console.WriteLine("Ingrese su nombre para crear usuario: ");
                 nombre = Console.ReadLine();
                 Console.WriteLine("Ingrese una contraseña:");
                 contrasena = Console.ReadLine();
                 usuario.UserName = nombre;
                 usuario.Password = contrasena;
+                Usuario newUsuario = new Usuario(string.Empty, nombre, contrasena);
+                Console.WriteLine("------Create");
+                UsuarioRepo.Insert(newUsuario);
 
                 Console.WriteLine($"su usuario es: {usuario.UserName} y su contraseña es: {usuario.Password}");
             }
@@ -33,8 +42,27 @@ namespace Application
                 contrasena = Console.ReadLine();
                 usuario.Acceso(nombre, contrasena);
             }
+            if (op == 3)
+            {
+                Console.WriteLine("------Delete");
+                UsuarioRepo.Delete(all.First().Id);
+            }
+            if (op == 4) 
+            {
+                Console.WriteLine("Ingrese su nombre para actualizar su usuario: ");
+                nombre = Console.ReadLine();
+                Console.WriteLine("Ingrese su nueva contraseña:");
+                contrasena = Console.ReadLine();
+                usuario.UserName = nombre;
+                usuario.Password = contrasena;
+                Console.WriteLine("-----Update");
+                Usuario updateClass = all.Last();
+                updateClass.UserName = nombre;
+                updateClass.Password = contrasena;
+                UsuarioRepo.update(updateClass);
+            }
         }
-        public static void MenuPrincipal()
+        public void MenuPrincipal()
         {
             string NombreProducto, justificacion;
             double CantidadProducto, Multiplicador;

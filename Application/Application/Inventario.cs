@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    public class Inventario
+    public class Inventario : Racion
     {
+        
         public Dictionary<string, double> inventario = new Dictionary<string, double>();
         public void Mostrarinventario()
         {
