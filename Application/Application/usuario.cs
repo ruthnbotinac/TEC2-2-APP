@@ -34,6 +34,7 @@ namespace Application
         {
             if(username.Equals(UserName) && password.Equals(Password))
             {
+                Interaccion interaccion = new Interaccion();
                 Console.WriteLine("Bienvenido a mi inventario " + UserName);
                 interaccion.MenuPrincipal();
             }

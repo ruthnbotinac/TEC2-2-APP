@@ -1,8 +1,4 @@
-﻿using Application.Data;
-using Application.Data.Repositorios;
-using static iTextSharp.text.pdf.AcroFields;
-
-namespace Application
+﻿namespace Application
 {
     public class Program
     {
@@ -11,9 +7,12 @@ namespace Application
             /* Conexion dbConn = new Conexion();
              Racion newRacion = new Racion(string.Empty, "racion1", 1, "gramos");
              Usuario newUsuario = new Usuario(string.Empty, "KaterinVera", "12345542");
+             //Inventario newInventario = new Inventario(string.Empty," ", " ");
              RacionRepositorio RacionRepo = new RacionRepositorio(dbConn);
              UsuarioRepositorio UsuarioRepo = new UsuarioRepositorio(dbConn);
              RacionRepositorio racionRepo = new RacionRepositorio(dbConn);
+             RecetaRepositorio recetaRepo = new RecetaRepositorio(dbConn);
+             InventarioRepositorio inventarioRepo = new InventarioRepositorio(dbConn);
 
              Console.WriteLine("------Create");
              UsuarioRepo.Insert(newUsuario);
@@ -21,7 +20,7 @@ namespace Application
              Console.WriteLine("------FindAll");
              var all = UsuarioRepo.FindAll(); 
 
-             all.FirstOrDefault(x => x.UserName = "" && x => x.Password )
+            // all.FirstOrDefault(x => x.UserName = "" && x => x.Password )
 
              foreach (var item in all) 
              {
@@ -41,12 +40,14 @@ namespace Application
              updateClass.Password = "HORNofSALVATION#2";
              UsuarioRepo.update(updateClass);
             */
-             Console.WriteLine("Bienvenido a mi inventario");
-             int op;
-             Console.WriteLine("seleccione una opción:\n 1.Crear Usuario\n 2.Iniciar sesión\n 3.Eliminar usuario\n 4.Actualización información");
-             op = int.Parse(Console.ReadLine());
-             interaccion.RegistroLogeo(op);
-            
+            Console.WriteLine("Bienvenido a mi inventario");
+            int op;
+            Interaccion interaccion = new Interaccion();
+            Console.WriteLine("seleccione una opción:\n 1.Crear Usuario\n 2.Iniciar sesión\n 3.Eliminar usuario\n 4.Actualización información");
+            op = int.Parse(Console.ReadLine());
+            interaccion.RegistroLogeo(op);
+
+
         }
     }
 }
