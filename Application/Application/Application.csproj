@@ -7,4 +7,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Firestore" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\sgicompras-e1064-firebase-adminsdk-sr8sa-1447f3d489.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

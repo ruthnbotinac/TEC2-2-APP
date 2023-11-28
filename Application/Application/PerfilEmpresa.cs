@@ -1,55 +1,55 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application
+﻿namespace Application
 {
     public class PerfilEmpresa
     {
-        ArrayList departamentos = new ArrayList();
-        ArrayList aprobadores = new ArrayList();
-        ArrayList compradores = new ArrayList();
-        ArrayList solicitantes = new ArrayList();
+        public List<string> departamentos = new List<string>();
+        public List<string> aprobadores = new List<string>();
+        public List<string> compradores = new List<string>();
+        public List<Solicitante> solicitantes = new List<Solicitante>();
+        public int contadorIdSolicitante = 1;
 
         public void RegistrarAprobador(string nombreAprobador, string departamento)
         {
             departamentos.Add(departamento);
             aprobadores.Add(nombreAprobador);
 
-            Console.WriteLine("Aprobador registrado con exito..." + nombreAprobador + " encargado del dpto... " + departamento);
-           
+            Console.WriteLine("Aprobador registrado con éxito: " + nombreAprobador + " encargado del departamento: " + departamento);
         }
+
         public void RegistraComprador(string nombreComprador)
         {
             compradores.Add(nombreComprador);
-            Console.WriteLine("Comprador registrado con exito..." + nombreComprador);
+            Console.WriteLine("Comprador registrado con éxito: " + nombreComprador);
         }
 
         public void RegistroSolicitante(string nombreSolicitante)
-
         {
-            solicitantes.Add(nombreSolicitante);
-            Console.WriteLine("Por favor ingrese el nombre de quien solicita");
+            Solicitante nuevoSolicitante = new Solicitante(nombreSolicitante, contadorIdSolicitante);
+            solicitantes.Add(nuevoSolicitante);
+
+            Console.WriteLine("Solicitante registrado con éxito: " + nombreSolicitante + ", ID: " + contadorIdSolicitante);
+
+            contadorIdSolicitante++;
         }
 
-        public ArrayList GetDepartamentos()
+        public List<Solicitante> GetSolicitantes()
+        {
+            return solicitantes;
+        }
+
+        public List<string> GetDepartamentos()
         {
             return departamentos;
         }
-        public ArrayList GetAprobadores()
+
+        public List<string> GetAprobadores()
         {
             return aprobadores;
         }
-        public ArrayList GetCompradores()
+
+        public List<string> GetCompradores()
         {
             return compradores;
-        }
-        public ArrayList GetSolicitantes()
-        {
-            return solicitantes;
         }
     }
 }

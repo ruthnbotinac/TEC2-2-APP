@@ -1,26 +1,40 @@
-﻿using System;
-using Application;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace Application
 {
     public class Aprobador
     {
-
         //propiedades 
+
+        public static int codigoAprobador = 1;
         public String nombreAprobador;
         public String departamento;
-        public ArrayList requisiciones;
 
-        //encapsulamiento
+        private string _id { get; set; }
+        private int _codigoAprobador { get; set; }
+        private string _departamento { get; set; }
+
         public Aprobador()
         {
-            requisiciones = new ArrayList();
+            
+        }
+
+        public string Id { get { return _id; } set { _id  = value; } }
+        public int CodigoAprobador { get { return _codigoAprobador; } set { codigoAprobador = value; } }
+        public string Departamento{ get { return _departamento; }  set { _departamento = value; }  }
+
+        public Aprobador(string Id, int codigoAprobaador, string departamento )
+        {
+            
+        }
+
+        //encapsulamiento
+
+
+        public void AprobadorCodigo()
+
+        {
+            CodigoAprobador = codigoAprobador++;
         }
 
         public string NombreAprobador
@@ -39,35 +53,26 @@ namespace Application
             }
         }
 
-        public string Departamento
-        {
-            get { return departamento; }
-            set { departamento = value; }
-        }
-        public ArrayList Requisiciones
-        {
-            get { return requisiciones; }
-            private set { requisiciones = value; }
-        }
+      
+       
+      
+
+     
         public void RegistrarAprobador(string nombreAprobador, string departamento)
         {
             NombreAprobador = nombreAprobador;
             Departamento = departamento;
         }
+    
         public void ImprimirDatosAprobador()
-        { 
-        Console.WriteLine("nombreAprobador: " + NombreAprobador);
-        Console.WriteLine("Departamento:" + Departamento);
-           
+        {
+            Console.WriteLine("ID del Aprobador: " + CodigoAprobador);
+            Console.WriteLine("Nombre del Aprobador: " + NombreAprobador);
+            Console.WriteLine("Departamento: " + Departamento);
+
         }
 
-        public void RevisarRequisicion(Requisicion requisicion)
-        {
-            Console.WriteLine("Fecha: " + requisicion.Fecha);
-            Console.WriteLine("Producto: " + requisicion.Producto);
-            Console.WriteLine("Cantidad: " + requisicion.Cantidad);
-            Console.WriteLine("Unidad de Medida: " + requisicion.UnidadDeMedida);
-        }
+        
 
     }
 }
