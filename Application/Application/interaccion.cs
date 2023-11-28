@@ -22,23 +22,14 @@ namespace Application
             var all = UsuarioRepo.FindAll();
             string nombre, contrasena, UserName;
             int opp;
-            
+
             if (op == 1)
             {
                 Console.WriteLine("Ingrese su nombre para crear usuario: ");
                 nombre = Console.ReadLine();
                 Console.WriteLine("Ingrese una contraseña:");
                 contrasena = Console.ReadLine();
-                usuario.UserName = nombre;
-                usuario.Password = contrasena;
-                Usuario newUsuario = new Usuario(string.Empty, nombre, contrasena);
-                Console.WriteLine("------Create");
-                UsuarioRepo.Insert(newUsuario);
-
-                Console.WriteLine($"su usuario es: {usuario.UserName} y su contraseña es: {usuario.Password}");
-                opp = int.Parse(Console.ReadLine());
-                RegistroLogeo(opp);
-
+                usuario.CrearUsuario(nombre, contrasena);
             }
             if (op == 2)
             {
@@ -47,37 +38,13 @@ namespace Application
                 nombre = Console.ReadLine();
                 Console.WriteLine("Contraseña: ");
                 contrasena = Console.ReadLine();
-                Console.WriteLine("------FindAll");
-                var all1 = UsuarioRepo.FindAll();
-                var acceso = all1.FirstOrDefault(x => x.UserName == nombre && x.Password == contrasena);
-                if(acceso == null)
-                {
-                    Console.WriteLine("Usuario y contraseña invalidos, intentelo nuevamente");
-                }
-                else
-                {
-                    Console.WriteLine("Bienvenido " + nombre);
-                    MenuPrincipal();
-                }
-               
+                usuario.Acceso(nombre, contrasena); 
             }
             if (op == 3)
             {
                 Console.WriteLine("escriba el nombre del usuario que desea eliminar:");
                 nombre= Console.ReadLine();
-                var userExist = all.FirstOrDefault(x => x.UserName == nombre);
-                if(userExist == null) 
-                {
-                    Console.WriteLine("El usuario ingresado no existe en la base de datos.");
-                }
-                else
-                {
-                    Console.WriteLine("id: " + userExist.Id);
-                    Console.WriteLine("------Delete");
-                    string Id = userExist.Id;
-                    UsuarioRepo.Delete(Id);
-                }
-                
+                usuario.BorrarUsuario(nombre);
             }
             if (op == 4)
             {
@@ -85,24 +52,7 @@ namespace Application
                 nombre = Console.ReadLine();
                 Console.WriteLine("Ingrese su nueva contraseña:");
                 contrasena = Console.ReadLine();
-                Console.WriteLine("------FindAll");
-                var all1 = UsuarioRepo.FindAll();
-                var userExist = all1.FirstOrDefault(x => x.UserName == nombre);
-                if(userExist == null) 
-                {
-                    Console.WriteLine("El usuario ingresado no existe en la base de datos");  
-                }
-                else
-                {
-                    usuario.UserName = nombre;
-                    usuario.Password = contrasena;
-                    Console.WriteLine("-----Update");
-                    Usuario updateClass = all.Last();
-                    updateClass.UserName = nombre;
-                    updateClass.Password = contrasena;
-                    UsuarioRepo.update(updateClass);
-                }
-                
+                usuario.ActualizarDatos(nombre, contrasena); 
             }
         }
         public void MenuPrincipal()

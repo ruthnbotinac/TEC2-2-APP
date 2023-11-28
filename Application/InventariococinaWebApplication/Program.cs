@@ -1,3 +1,6 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using InventariococinaWebApplication.Data;
 namespace InventariococinaWebApplication
 {
     public class Program
@@ -5,6 +8,8 @@ namespace InventariococinaWebApplication
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<InventariococinaWebApplicationContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("InventariococinaWebApplicationContext") ?? throw new InvalidOperationException("Connection string 'InventariococinaWebApplicationContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
