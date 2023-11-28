@@ -15,7 +15,7 @@ namespace Application.Data.FireStoreModels
         [FirestoreProperty]
         public List<Application.Data.FireStoreModels.Racion> Raciones { get; set; }
         [FirestoreProperty]
-        public Dictionary<int, string> Descripcion { get; set; }
+        public string Descripcion { get; set; }
         [FirestoreProperty]
         public string NombreReceta { get; set; }
 

@@ -15,12 +15,14 @@ namespace Application
 
         public void RegistroLogeo(int op)
         {
+            Console.WriteLine("seleccione una opción:\n 1.Crear Usuario\n 2.Iniciar sesión\n 3.Eliminar usuario\n 4.Actualización información");
             Conexion dbConn = new Conexion();
             UsuarioRepositorio UsuarioRepo = new UsuarioRepositorio(dbConn);
             Usuario usuario = new Usuario();
             var all = UsuarioRepo.FindAll();
-            string nombre, contrasena;
+            string nombre, contrasena, UserName;
             int opp;
+            
             if (op == 1)
             {
                 Console.WriteLine("Ingrese su nombre para crear usuario: ");
@@ -45,26 +47,62 @@ namespace Application
                 nombre = Console.ReadLine();
                 Console.WriteLine("Contraseña: ");
                 contrasena = Console.ReadLine();
-                usuario.Acceso(nombre, contrasena);
+                Console.WriteLine("------FindAll");
+                var all1 = UsuarioRepo.FindAll();
+                var acceso = all1.FirstOrDefault(x => x.UserName == nombre && x.Password == contrasena);
+                if(acceso == null)
+                {
+                    Console.WriteLine("Usuario y contraseña invalidos, intentelo nuevamente");
+                }
+                else
+                {
+                    Console.WriteLine("Bienvenido " + nombre);
+                    MenuPrincipal();
+                }
+               
             }
             if (op == 3)
             {
-                Console.WriteLine("------Delete");
-                UsuarioRepo.Delete(all.First().Id);
+                Console.WriteLine("escriba el nombre del usuario que desea eliminar:");
+                nombre= Console.ReadLine();
+                var userExist = all.FirstOrDefault(x => x.UserName == nombre);
+                if(userExist == null) 
+                {
+                    Console.WriteLine("El usuario ingresado no existe en la base de datos.");
+                }
+                else
+                {
+                    Console.WriteLine("id: " + userExist.Id);
+                    Console.WriteLine("------Delete");
+                    string Id = userExist.Id;
+                    UsuarioRepo.Delete(Id);
+                }
+                
             }
             if (op == 4)
             {
-                Console.WriteLine("Ingrese su nombre para actualizar su usuario: ");
+                Console.WriteLine("Ingrese su usuario para actualizar sus datos: ");
                 nombre = Console.ReadLine();
                 Console.WriteLine("Ingrese su nueva contraseña:");
                 contrasena = Console.ReadLine();
-                usuario.UserName = nombre;
-                usuario.Password = contrasena;
-                Console.WriteLine("-----Update");
-                Usuario updateClass = all.Last();
-                updateClass.UserName = nombre;
-                updateClass.Password = contrasena;
-                UsuarioRepo.update(updateClass);
+                Console.WriteLine("------FindAll");
+                var all1 = UsuarioRepo.FindAll();
+                var userExist = all1.FirstOrDefault(x => x.UserName == nombre);
+                if(userExist == null) 
+                {
+                    Console.WriteLine("El usuario ingresado no existe en la base de datos");  
+                }
+                else
+                {
+                    usuario.UserName = nombre;
+                    usuario.Password = contrasena;
+                    Console.WriteLine("-----Update");
+                    Usuario updateClass = all.Last();
+                    updateClass.UserName = nombre;
+                    updateClass.Password = contrasena;
+                    UsuarioRepo.update(updateClass);
+                }
+                
             }
         }
         public void MenuPrincipal()
@@ -98,7 +136,6 @@ namespace Application
                 {
                     Console.WriteLine("El producto ya existe en el inventario, actualize peso/cantidad");
                     Console.WriteLine("-----Update");
-                    //Inventario updateInventario = all.Last();
                     Console.WriteLine("Ingrese el peso o la cantidad del producto:");
                     Peso = double.Parse(Console.ReadLine());
                     productExist.Peso = Peso;
@@ -123,7 +160,6 @@ namespace Application
                 {
                     Console.WriteLine("El producto encontrado, ingrese la nueva cantidad/peso");
                     Console.WriteLine("-----Update");
-                    //Inventario updateInventario = all.Last();
                     Console.WriteLine("Ingrese el peso o la cantidad del producto:");
                     Peso = double.Parse(Console.ReadLine());
                     productExist.Peso = Peso;
@@ -153,7 +189,8 @@ namespace Application
                     {
                         var result = item.Peso * Multiplicador;
 
-                        Console.Write(result);
+                        Console.Write("la cantidad de ingredientes usada es de: " + result + " " + item.UnidadMedida + " " + item.Producto);
+                        Console.WriteLine(" ");
                     }
                 }
                 MenuPrincipal();
@@ -165,16 +202,21 @@ namespace Application
                 string nombreReceta = Console.ReadLine();
                 Console.WriteLine("Ingrese el listado de ingredientes con sus respectivos pesos y unidad de medida");
                 List<Racion> listaRaciones = new List<Racion>();
-                Console.WriteLine("Ingrese las raciones (para salir, escriba 'salir'):");
-                while (true)
-                {
-                    Console.Write("Producto: ");
-                    string producto = Console.ReadLine();
+                Console.WriteLine("Ingrese la cantidad de productos que desea agregar:");
 
-                    if (producto.ToLower() == "salir")
-                    {
-                        break;
-                    }
+                if (!int.TryParse(Console.ReadLine(), out int cantidadProductos) || cantidadProductos <= 0)
+                {
+                    Console.WriteLine("Cantidad inválida. Debe ingresar un número mayor que cero.");
+                    return;
+                }
+
+                int contador = 0;
+
+                while (contador < cantidadProductos)
+                {
+                    Console.WriteLine($"\nProducto {contador + 1}:");
+                    Console.Write("Nombre: ");
+                    string nombreProducto = Console.ReadLine();
 
                     Console.Write("Cantidad: ");
                     if (!double.TryParse(Console.ReadLine(), out double cantidad))
@@ -186,74 +228,33 @@ namespace Application
                     Console.Write("Unidad de Medida: ");
                     string unidadMedida = Console.ReadLine();
 
-                    // Crear una nueva instancia de Racion y agregarla a la lista
                     Racion nuevaRacion = new Racion
                     {
-                        Producto = producto,
+                        Producto = nombreProducto,
                         Peso = cantidad,
                         UnidadMedida = unidadMedida
                     };
 
                     listaRaciones.Add(nuevaRacion);
-
-                    Dictionary<int, string> descripcion = new Dictionary<int, string>();
-
-                    Console.WriteLine("Ingrese el paso a paso de la receta (para salir, escriba 'salir'):");
-
-                    while (true)
-                    {
-                        Console.Write("Ingrese el numero del paso: ");
-                        string inputKey = Console.ReadLine();
-
-                        if (inputKey.ToLower() == "salir")
-                        {
-                            break;
-                        }
-
-                        if (!int.TryParse(inputKey, out int key))
-                        {
-                            Console.WriteLine("Llave inválida. Intente nuevamente.");
-                            continue;
-                        }
-
-                        Console.Write("Ingrese la descripción del paso : ");
-                        string value = Console.ReadLine();
-
-                        // Verificar si la llave ya existe en el diccionario
-                        if (descripcion.ContainsKey(key))
-                        {
-                            Console.WriteLine("La llave ya existe en el diccionario. Intente con una llave diferente.");
-                            continue;
-                        }
-
-                        // Agregar el par llave-valor al diccionario
-                        descripcion.Add(key, value);
-                    }
-
-                    // Mostrar el diccionario ingresado
-                    Console.WriteLine("\nDiccionario ingresado:");
-                    foreach (var kvp in descripcion)
-                    {
-                        Console.WriteLine($"Llave: {kvp.Key}, Valor: {kvp.Value}");
-                    }
-                    // Mostrar las raciones ingresadas
-                    Console.WriteLine("\nRaciones ingresadas:");
-                    foreach (var racion in listaRaciones)
-                    {
-                        Console.WriteLine($"Producto: {racion.Producto}, Cantidad: {racion.Peso}, Unidad de Medida: {racion.UnidadMedida}");
-                    }
-
-                    Receta newReceta = new Receta(string.Empty, nombreReceta, listaRaciones, descripcion);
-                    Console.WriteLine("------Create");
-                    recetaRepo.Insert(newReceta);
-                    MenuPrincipal();
+                    contador++;
                 }
-                if (op == 5)
-                {
-                    Inventario inventario = new Inventario();
-                    Console.WriteLine("Este es su inventario: ");
-                    MenuPrincipal();
-                }
+                string descripcion;
+                Console.WriteLine("Agrege el paso a paso de la receta: ");
+                descripcion = Console.ReadLine();
+
+
+                Receta newReceta = new Receta(string.Empty, nombreReceta, listaRaciones, descripcion);
+                Console.WriteLine("------Create");
+                recetaRepo.Insert(newReceta);
+                MenuPrincipal();
+
+            }
+            if (op == 5)
+            {
+                Console.WriteLine("------FindAll");
+                var all = inventarioRepo.FindAll();
+                Console.WriteLine(all);
+                MenuPrincipal();
             }
         }
     }

@@ -42,8 +42,8 @@
             */
             Console.WriteLine("Bienvenido a mi inventario");
             int op;
-            Interaccion interaccion = new Interaccion();
             Console.WriteLine("seleccione una opción:\n 1.Crear Usuario\n 2.Iniciar sesión\n 3.Eliminar usuario\n 4.Actualización información");
+            Interaccion interaccion = new Interaccion();
             op = int.Parse(Console.ReadLine());
             interaccion.RegistroLogeo(op);
 
