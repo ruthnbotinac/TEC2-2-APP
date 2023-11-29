@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Data;
+using Application.Data.Repositorios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,28 +10,35 @@ namespace Application
 {
     public class Tandas
     {
+        Interaccion interaccion = new Interaccion();    
         public Tandas() { }
 
-        public void RealizarTandas(string NombreProducto, double Multiplicador)
+        public void RealizarTandas(string NombreReceta)
         {
-            Receta receta = new Receta();
-            receta.recetario();
-
-            if ( NombreProducto == "Cheesecake Queso Paipa")
+            double Multiplicador;
+            Conexion dbConn = new Conexion();
+            RecetaRepositorio recetaRepo = new RecetaRepositorio(dbConn);
+            Console.WriteLine("------FindAll");
+            var all = recetaRepo.FindAll();
+            var recetaExist = all.FirstOrDefault(x => x.NombreReceta == NombreReceta);
+            if (recetaExist == null)
             {
-               foreach (var key in receta.CheesecakeQuesoPaipa.Keys)
-                {
-                    receta.CheesecakeQuesoPaipa[key] *= Multiplicador; ;
-                }
-
-                Console.WriteLine("\nLa cantidad empleada de ingredientes para realizar la receta " + Multiplicador + " veces es:");
-
-                foreach ( var kvp in receta.CheesecakeQuesoPaipa) 
-                {
-                    Console.WriteLine($"Ingrediente: {kvp.Key}, Peso: {kvp.Value}");
-                }
-
+                Console.WriteLine("Receta no encontrada");
             }
+            else
+            {
+                Console.WriteLine("Ingrese la cantidad de veces por la cual quiere multiplicar la receta");
+                Multiplicador = double.Parse(Console.ReadLine());
+
+                foreach (var item in recetaExist.Raciones)
+                {
+                    var result = item.Peso * Multiplicador;
+
+                    Console.Write("la cantidad de ingredientes usada es de: " + result + " " + item.UnidadMedida + " " + item.Producto);
+                    Console.WriteLine(" ");
+                }
+            }
+            interaccion.MenuPrincipal();
         }
 
     }

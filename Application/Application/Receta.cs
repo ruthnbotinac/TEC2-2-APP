@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Data;
+using Application.Data.Repositorios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,7 @@ namespace Application
 {
     public class Receta
     {
-        public Dictionary<string, double> CheesecakeQuesoPaipa { get; set; }
+       Interaccion interaccion = new Interaccion(); 
         private string _id { get; set; }
         private List<Racion> _raciones { get; set; }
         private string _descripcion { get; set; }
@@ -39,21 +41,8 @@ namespace Application
 
             return new Dictionary<string, Receta>();
 
-
         }
-        public void recetario()
-        {
-            CheesecakeQuesoPaipa = new Dictionary<string, double>();
-
-            CheesecakeQuesoPaipa["Azúcar"] = 384;
-            CheesecakeQuesoPaipa["Crema de leche"] = 768;
-            CheesecakeQuesoPaipa["Huevos"] = 842;
-            CheesecakeQuesoPaipa["Queso crema"] = 1840;
-            CheesecakeQuesoPaipa["Queso azul"] = 8;
-            CheesecakeQuesoPaipa["Queso paipa"] = 150;
-            CheesecakeQuesoPaipa["Sal"] = 15;
-        }
-
+    
         public Receta (string id, string nombreReceta, List<Racion> raciones, string descripcion)
         {
             _id = id;
@@ -62,6 +51,61 @@ namespace Application
             _nombreReceta = nombreReceta;
            
         }
-        
+        public void AgregarReceta()
+        {
+            Conexion dbConn = new Conexion();
+            RecetaRepositorio recetaRepo = new RecetaRepositorio(dbConn);
+            Console.WriteLine("Ingrese le nombre de la receta:");
+            string nombreReceta = Console.ReadLine();
+            Console.WriteLine("Ingrese el listado de ingredientes con sus respectivos pesos y unidad de medida");
+            List<Racion> listaRaciones = new List<Racion>();
+            Console.WriteLine("Ingrese la cantidad de productos que desea agregar:");
+
+            if (!int.TryParse(Console.ReadLine(), out int cantidadProductos) || cantidadProductos <= 0)
+            {
+                Console.WriteLine("Cantidad inválida. Debe ingresar un número mayor que cero.");
+                return;
+            }
+
+            int contador = 0;
+
+            while (contador < cantidadProductos)
+            {
+                Console.WriteLine($"\nProducto {contador + 1}:");
+                Console.Write("Nombre: ");
+                string nombreProducto = Console.ReadLine();
+
+                Console.Write("Cantidad: ");
+                if (!double.TryParse(Console.ReadLine(), out double cantidad))
+                {
+                    Console.WriteLine("Cantidad inválida. Intente nuevamente.");
+                    continue;
+                }
+
+                Console.Write("Unidad de Medida: ");
+                string unidadMedida = Console.ReadLine();
+
+                Racion nuevaRacion = new Racion
+                {
+                    Producto = nombreProducto,
+                    Peso = cantidad,
+                    UnidadMedida = unidadMedida
+                };
+
+                listaRaciones.Add(nuevaRacion);
+                contador++;
+            }
+            string descripcion;
+            Console.WriteLine("Agrege el paso a paso de la receta: ");
+            descripcion = Console.ReadLine();
+
+
+            Receta newReceta = new Receta(string.Empty, nombreReceta, listaRaciones, descripcion);
+            Console.WriteLine("------Create");
+            recetaRepo.Insert(newReceta);
+            interaccion.MenuPrincipal();
+
+        }
+
     }
 }
